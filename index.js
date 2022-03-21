@@ -40,6 +40,36 @@ app.post(BASE_API_URL+"/repeatersStats", (req,res)=>{
 });
 
 //######################   API Javier Hidalgo García  ###############################//
+var houseworkStats = [
+    {
+        country:"Albanian",
+        year : 2011,
+        women : 21.7,
+        men : 3.47,
+        average : 12.58
+
+    },
+
+    {
+        country:"Argentina",
+        year : 2013,
+        women : 21.7,
+        men : 3.47,
+        average : 12.58
+    }
+];
+
+app.get(BASE_API_URL+"/houseworkStats", (req,res)=>{
+
+    res.send(JSON.stringify(houseworkStats,null,2));
+});
+
+app.post(BASE_API_URL+"/houseworkStats", (req,res)=>{
+
+    houseworkStats.push(req.body);
+
+    res.sendStatus(201,"CREATED");
+});
 
 
 app.use("/", express.static('public'));
