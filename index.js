@@ -59,12 +59,12 @@ var houseworkStats = [
     }
 ];
 
-app.get(BASE_API_URL+"/houseworkStats", (req,res)=>{
+app.get(BASE_API_URL+"/housework-stats", (req,res)=>{
 
     res.send(JSON.stringify(houseworkStats,null,2));
 });
 
-app.post(BASE_API_URL+"/houseworkStats", (req,res)=>{
+app.post(BASE_API_URL+"/housework-stats", (req,res)=>{
 
     houseworkStats.push(req.body);
 
