@@ -9,7 +9,7 @@
 - **URL**: [http://sos2122-32.herokuapp.com](http://sos2122-32.herokuapp.com)
 -  **APIs**:
     - [http://sos2122-32.herokuapp.com/api/v1/housework-stats](http://sos2122-32.herokuapp.com/api/v1/housework-stats) (developed by [Javier Hidalgo Garcia](https://github.com/javighidalgo01))
-    - [http://sos2122-32.herokuapp.com/api/v1/repeatersStats](http://sos2122-32.herokuapp.com/api/v1/repeatersStats) (developed by [Rafael Molino Alvarez](https://github.com/404))
+    - [http://sos2122-32.herokuapp.com/api/v1/repeaters-stats](http://sos2122-32.herokuapp.com/api/v1/repeaters-stats) (developed by [Rafael Molino Alvarez](https://github.com/404))
     - [https://sos2021-00.herokuapp.com/api/v1/my-awesome-resource-3/docs](https://sos2021-00.herokuapp.com/api/v1/my-awesome-resource-3/docs) (developed by [Student 3](https://github.com/404))
 ```
 
