@@ -32,6 +32,8 @@ app.get(BASE_API_URL+"/repeatersStats", (req,res)=>{
     res.send(JSON.stringify(repeatersStats,null,2));
 });
 
+
+
 app.post(BASE_API_URL+"/repeatersStats", (req,res)=>{
 
     repeatersStats.push(req.body);
@@ -40,35 +42,127 @@ app.post(BASE_API_URL+"/repeatersStats", (req,res)=>{
 });
 
 //######################   API Javier Hidalgo García  ###############################//
-var houseworkStats = [
-    {
-        country:"Albanian",
-        year : 2011,
-        women : 21.7,
-        men : 3.47,
-        average : 12.58
-
-    },
-
-    {
-        country:"Argentina",
-        year : 2013,
-        women : 21.7,
-        men : 3.47,
-        average : 12.58
-    }
-];
+var houseworkStats = [];
 
 app.get(BASE_API_URL+"/housework-stats", (req,res)=>{
-
     res.send(JSON.stringify(houseworkStats,null,2));
 });
 
+app.get(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
+    var houseworkStats1 = [
+        {
+            country:"Albanian",
+            year : 2011,
+            women : 21.7,
+            men : 3.47,
+            average : 12.58
+    
+        },
+    
+        {
+            country:"Chile",
+            year : 2015,
+            women : 20.1,
+            men : 9.85,
+            average : 14.98
+    
+        },
+    
+        {
+            country:"Belgium",
+            year : 2013,
+            women : 16.04,
+            men : 10.06,
+            average : 13.05
+    
+        },
+    
+        {
+            country:"Ireland",
+            year : 2005,
+            women : 20.55,
+            men : 8.95,
+            average : 14.75
+    
+        },
+    
+        {
+            country:"Argentina",
+            year : 2013,
+            women : 21.7,
+            men : 3.47,
+            average : 12.58
+        }
+    ];
+
+    houseworkName = houseworkStats.filter((h)=>{
+        return(h.country==req.params.name)
+    });
+
+    if(req.params.name == "loadInitialData" && houseworkStats==0){
+        houseworkStats = houseworkStats1;
+        res.sendStatus(200, "OK")
+    } else if(houseworkName == 0){
+        res.sendStatus(404, "NOT FOUND");
+    } else{
+        res.send(JSON.stringify(houseworkName,null,2));
+    }
+});
+
 app.post(BASE_API_URL+"/housework-stats", (req,res)=>{
+    if(req.body.country && parseInt(req.body.year) && parseFloat(req.body.men) && parseFloat(req.body.women) && parseFloat(req.body.average) && Object.keys(req.body).length==5){
+    result = houseworkStats.filter((h)=>{
+        return(JSON.stringify(h,null,2)===JSON.stringify(req.body,null,2));
+    });
+    if(result != 0){
+        res.sendStatus(409,"CONFLICT");
+    }else{
+        houseworkStats.push(req.body);
+        res.sendStatus(201,"CREATED");
+    }
+}else{
+    res.sendStatus(400,"BAD REQUEST");
+}
+});
 
-    houseworkStats.push(req.body);
+app.post(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
+    res.sendStatus(405,"METHOD NOT ALLOWED");
+});
 
+app.put(BASE_API_URL+"/housework-stats", (req,res)=>{
+    res.sendStatus(405,"METHOD NOT ALLOWED");
+});
+
+app.put(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
+    if(req.body.country && parseInt(req.body.year) && parseFloat(req.body.men) && parseFloat(req.body.women) && parseFloat(req.body.average) && Object.keys(req.body).length==5){
+    if(req.params.name==req.body.country){
+    houseworkStats = houseworkStats.map((h)=>{
+        if(h.country==req.params.name){
+            return(req.body);
+        }else{
+            return h;
+        }
+    })
     res.sendStatus(201,"CREATED");
+}
+    else{
+    res.sendStatus(400,"BAD REQUEST");
+    }
+}else{
+    res.sendStatus(400,"BAD REQUEST");
+}
+});
+
+app.delete(BASE_API_URL+"/housework-stats", (req,res)=>{
+    houseworkStats = []
+    res.sendStatus(200,"OK");
+});
+
+app.delete(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
+    houseworkStats = houseworkStats.filter((h)=>{
+        return(h.country!=req.params.name)
+    })
+    res.sendStatus(200,"OK");
 });
 
 
