@@ -255,6 +255,130 @@ app.delete(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
     res.sendStatus(200,"OK");
 });
 
+//######################   API Sergio García Blanco  ###############################//
+var endingStats = [];
+
+app.get(BASE_API_URL+"/ending-stats", (req,res)=>{
+    res.send(JSON.stringify(endingStats,null,2));
+});
+
+app.get(BASE_API_URL+"/ending-stats/:name", (req,res)=>{
+    var endingStats1 = [
+        {
+            country:"Albanian",
+            year : 2011,
+            women : 94.400,
+            men : 91.7,
+            average : 93.050
+    
+        },
+    
+        {
+            country:"Chile",
+            year : 2015,
+            women : 96.800,
+            men : 97.1,
+            average : 96.950
+    
+        },
+    
+        {
+            country:"Belgium",
+            year : 2013,
+            women : 98.3,
+            men : 98.5,
+            average : 98.4
+    
+        },
+    
+        {
+            country:"Ireland",
+            year : 2016,
+            women : 100.400,
+            men : 99,
+            average : 99.700
+    
+        },
+    
+        {
+            country:"Argentina",
+            year : 2013,
+            women : 101.200,
+            men : 102.1,
+            average : 101.650
+        }
+    ];
+
+    endingName = endingStats.filter((h)=>{
+        return(h.country==req.params.name)
+    });
+
+    if(req.params.name == "loadInitialData" && endingStats==0){
+        endingStats = endingStats1;
+        res.sendStatus(200, "OK")
+    } else if(endingStats == 0){
+        res.sendStatus(404, "NOT FOUND");
+    } else{
+        res.send(JSON.stringify(endingStats,null,2));
+    }
+});
+
+app.post(BASE_API_URL+"/ending-stats", (req,res)=>{
+    if(req.body.country && parseInt(req.body.year) && parseFloat(req.body.men) && parseFloat(req.body.women) && parseFloat(req.body.average) && Object.keys(req.body).length==5){
+    result = endingStats.filter((h)=>{
+        return(JSON.stringify(h,null,2)===JSON.stringify(req.body,null,2));
+    });
+    if(result != 0){
+        res.sendStatus(409,"CONFLICT");
+    }else{
+        endingStats.push(req.body);
+        res.sendStatus(201,"CREATED");
+    }
+}else{
+    res.sendStatus(400,"BAD REQUEST");
+}
+});
+
+app.post(BASE_API_URL+"/ending-stats/:name", (req,res)=>{
+    res.sendStatus(405,"METHOD NOT ALLOWED");
+});
+
+app.put(BASE_API_URL+"/ending-stats", (req,res)=>{
+    res.sendStatus(405,"METHOD NOT ALLOWED");
+});
+
+app.put(BASE_API_URL+"/ending-stats/:name", (req,res)=>{
+    if(req.body.country && parseInt(req.body.year) && parseFloat(req.body.men) && parseFloat(req.body.women) && parseFloat(req.body.average) && Object.keys(req.body).length==5){
+    if(req.params.name==req.body.country){
+        endingStats = endingStats.map((h)=>{
+        if(h.country==req.params.name){
+            return(req.body);
+        }else{
+            return h;
+        }
+    })
+    res.sendStatus(201,"CREATED");
+}
+    else{
+    res.sendStatus(400,"BAD REQUEST");
+    }
+}else{
+    res.sendStatus(400,"BAD REQUEST");
+}
+});
+
+app.delete(BASE_API_URL+"/ending-stats", (req,res)=>{
+    houseworkStats = []
+    res.sendStatus(200,"OK");
+});
+
+app.delete(BASE_API_URL+"/ending-stats/:name", (req,res)=>{
+    houseworkStats = houseworkStats.filter((h)=>{
+        return(h.country!=req.params.name)
+    })
+    res.sendStatus(200,"OK");
+});
+
 //######################   API ****  ###############################//
 
 
