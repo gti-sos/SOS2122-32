@@ -194,7 +194,10 @@ app.get(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
         res.sendStatus(200, "OK")
     } else if(houseworkName == 0){
         res.sendStatus(404, "NOT FOUND");
-    } else{
+    } else if(req.params.name == "docs"){
+        res.redirect("https://documenter.getpostman.com/view/20237276/UVyoUxSu");
+    } 
+    else{
         res.send(JSON.stringify(houseworkName,null,2));
     }
 });
