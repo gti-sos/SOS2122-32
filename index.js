@@ -123,7 +123,7 @@ app.put(BASE_API_URL+"/repeaters-stats/:name", (req,res)=>{
 });
 
 app.delete(BASE_API_URL+"/repeaters-stats", (req,res)=>{
-    houseworkStats = []
+    repeatersStats = []
     res.sendStatus(200,"OK");
 });
 
