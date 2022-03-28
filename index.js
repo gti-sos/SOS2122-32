@@ -69,9 +69,12 @@ app.get(BASE_API_URL+"/repeaters-stats/:name", (req,res)=>{
     if(req.params.name == "loadInitialData" && repeatersStats==0){
         repeatersStats = repeatersStats1;
         res.sendStatus(200, "OK")
-    } else if(repeatersName == 0){
+    } else if(repeatersName == 0 && req.params.name != "docs"){
         res.sendStatus(404, "NOT FOUND");
-    } else{
+    } else if(req.params.name == "docs"){
+        res.redirect("https://documenter.getpostman.com/view/20237623/UVyoVHPy");
+    } 
+    else{
         res.send(JSON.stringify(repeatersName,null,2));
     }
 });
@@ -121,7 +124,7 @@ app.put(BASE_API_URL+"/repeaters-stats/:name", (req,res)=>{
 });
 
 app.delete(BASE_API_URL+"/repeaters-stats", (req,res)=>{
-    houseworkStats = []
+    repeatersStats = []
     res.sendStatus(200,"OK");
 });
 
@@ -193,9 +196,12 @@ app.get(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
     if(req.params.name == "loadInitialData" && houseworkStats==0){
         houseworkStats = houseworkStats1;
         res.sendStatus(200, "OK")
-    } else if(houseworkName == 0){
+    } else if(houseworkName == 0 && req.params.name != "docs"){
         res.sendStatus(404, "NOT FOUND");
-    } else{
+    } else if(req.params.name == "docs"){
+        res.redirect("https://documenter.getpostman.com/view/20237276/UVyoUxSu");
+    } 
+    else{
         res.send(JSON.stringify(houseworkName,null,2));
     }
 });
@@ -225,8 +231,9 @@ app.put(BASE_API_URL+"/housework-stats", (req,res)=>{
 });
 
 app.put(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
+    console.log(JSON.stringify(houseworkStats,null,2).includes(req.body.country,null,2));
     if(req.body.country && parseInt(req.body.year) && parseFloat(req.body.men) && parseFloat(req.body.women) && parseFloat(req.body.average) && Object.keys(req.body).length==5){
-    if(req.params.name==req.body.country){
+    if(req.params.name==req.body.country && JSON.stringify(houseworkStats,null,2).includes(req.body.country)){
     houseworkStats = houseworkStats.map((h)=>{
         if(h.country==req.params.name){
             return(req.body);
@@ -236,8 +243,10 @@ app.put(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
     })
     res.sendStatus(201,"CREATED");
 }
-    else{
-    res.sendStatus(400,"BAD REQUEST");
+    else if(!JSON.stringify(houseworkStats,null,2).includes(req.body.country)){
+    res.sendStatus(404,"NOT FOUND");
+    }else{
+        res.sendStatus(400,"BAD REQUEST");
     }
 }else{
     res.sendStatus(400,"BAD REQUEST");
