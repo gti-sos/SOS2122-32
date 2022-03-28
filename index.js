@@ -1,11 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8081;
 
 app.use(bodyParser.json());
 
 const BASE_API_URL = "/api/v1";
+const API_DOC_PORTAL = "https://documenter.getpostman.com/view/19904658/UVyoVdQr";
 
 //######################   API Rafael Molino Alvarez  ###############################//
 var repeatersStats = [];
@@ -256,14 +257,19 @@ app.delete(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
 });
 
 //######################   API Sergio García Blanco  ###############################//
+app.get(BASE_API_URL+ "/ending-stats/docs",(req,res)=>{
+    res.redirect(API_DOC_PORTAL); 
+
+});
+
 var endingStats = [];
 
 app.get(BASE_API_URL+"/ending-stats", (req,res)=>{
     res.send(JSON.stringify(endingStats,null,2));
 });
 
-app.get(BASE_API_URL+"/ending-stats/:name", (req,res)=>{
-    var endingStats1 = [
+app.get(BASE_API_URL + "/ending-stats/loadInitialData", (req, res)=>{
+    var iniData = [
         {
             country:"Albanian",
             year : 2011,
@@ -308,76 +314,108 @@ app.get(BASE_API_URL+"/ending-stats/:name", (req,res)=>{
             average : 101.650
         }
     ];
-
-    endingName = endingStats.filter((h)=>{
-        return(h.country==req.params.name)
+    iniData.forEach((e) => {
+        endingStats.push(e);
     });
+    res.send(JSON.stringify(endingStats,null,2));
 
-    if(req.params.name == "loadInitialData" && endingStats==0){
-        endingStats = endingStats1;
-        res.sendStatus(200, "OK")
-    } else if(endingStats == 0){
-        res.sendStatus(404, "NOT FOUND");
-    } else{
-        res.send(JSON.stringify(endingStats,null,2));
-    }
 });
 
-app.post(BASE_API_URL+"/ending-stats", (req,res)=>{
-    if(req.body.country && parseInt(req.body.year) && parseFloat(req.body.men) && parseFloat(req.body.women) && parseFloat(req.body.average) && Object.keys(req.body).length==5){
-    result = endingStats.filter((h)=>{
-        return(JSON.stringify(h,null,2)===JSON.stringify(req.body,null,2));
+app.get(BASE_API_URL+ "/ending-stats",(req,res)=>{
+    res.send(JSON.stringify(endingStats,null,2)); 
+
+});
+app.get(BASE_API_URL+"/ending-stats/:country", (req,res)=>{
+    var endingCountry = req.params.country;
+    filteredEnding = endingStats.filter((ending)=>{
+        return (ending.country == endingCountry);
     });
-    if(result != 0){
-        res.sendStatus(409,"CONFLICT");
+
+    if(filteredEnding == 0){
+        res.sendStatus(404,"NOT FOUND");
     }else{
-        endingStats.push(req.body);
-        res.sendStatus(201,"CREATED");
+        res.send(JSON.stringify(filteredEnding[0],null,2));
     }
-}else{
-    res.sendStatus(400,"BAD REQUEST");
+});
+function error(ending){
+    return (Object.keys(ending.body).length != 5 ||
+    ending.body.country == null ||
+    ending.body.year == null ||
+    ending.body.women == null ||
+    ending.body.men == null ||
+    ending.body.average == null);
 }
-});
 
-app.post(BASE_API_URL+"/ending-stats/:name", (req,res)=>{
-    res.sendStatus(405,"METHOD NOT ALLOWED");
-});
+app.post(BASE_API_URL+ "/ending-stats",(req,res)=>{
+    if (error(req)){
+        res.sendStatus(400, "BAD REQUEST")
+    }
+    else {
+        filteredEnding = endingStats.filter((ending) => {
+            return (ending.country == req.body.country
+                && ending.year == req.body.year
+                && ending.women == req.body.women
+                && ending.men == req.body.men
+                && ending.average == req.body.average);
+        });
+        
+        existente = endingStats.filter((ending) => {
+            return (ending.year == req.body.year && ending.country == req.body.country);
+        })
 
+        if (existente != 0){
+            res.sendStatus(409, "CONFLICT");
+        }else{
+            endingStats.push(req.body);
+            res.sendStatus(201, "CREATED");
+        }
+    } 
+});
+app.post(BASE_API_URL+"/ending-stats/:country",(req,res)=>{
+    res.sendStatus(405,"METHOD NOT FOUND"); 
+});
+app.delete(BASE_API_URL+"/ending-stats", (req,res)=>{
+    endingStats = [];
+    res.sendStatus(200,"OK");
+});
+app.delete(BASE_API_URL+"/ending-stats/:country", (req,res)=>{
+    var endingCountry = req.params.country;
+    endingStats = endingStats.filter((ending)=>{
+        return (ending.country != endingCountry);
+    });
+    res.sendStatus(200,"OK");
+});
 app.put(BASE_API_URL+"/ending-stats", (req,res)=>{
     res.sendStatus(405,"METHOD NOT ALLOWED");
 });
-
-app.put(BASE_API_URL+"/ending-stats/:name", (req,res)=>{
-    if(req.body.country && parseInt(req.body.year) && parseFloat(req.body.men) && parseFloat(req.body.women) && parseFloat(req.body.average) && Object.keys(req.body).length==5){
-    if(req.params.name==req.body.country){
-        endingStats = endingStats.map((h)=>{
-        if(h.country==req.params.name){
-            return(req.body);
+app.put(BASE_API_URL+"/ending-stats/:country/:year",(req,res)=>{
+    if(req.body.country == null |
+        req.body.year == null | 
+        req.body.women == null | 
+        req.body.men == null | 
+        req.body.average == null){
+        res.sendStatus(400,"BAD REQUEST");
+    }else{
+        var country = req.params.country;
+        var year = req.params.year;
+        var body = req.body;
+        var index = endingStats.findIndex((ending) =>{
+            return (ending.country == country && ending.year == year)
+        })
+        if(index == null){
+            res.sendStatus(404,"NOT FOUND");
+        }else if(country != body.country || year != body.year){
+            res.sendStatus(400,"BAD REQUEST");
         }else{
-            return h;
+            var update_endingStats = {...body};
+            endingStats[index] = update_endingStats;
+            
+            res.sendStatus(200,"UPDATED");
         }
-    })
-    res.sendStatus(201,"CREATED");
-}
-    else{
-    res.sendStatus(400,"BAD REQUEST");
     }
-}else{
-    res.sendStatus(400,"BAD REQUEST");
-}
+
 });
 
-app.delete(BASE_API_URL+"/ending-stats", (req,res)=>{
-    houseworkStats = []
-    res.sendStatus(200,"OK");
-});
-
-app.delete(BASE_API_URL+"/ending-stats/:name", (req,res)=>{
-    houseworkStats = houseworkStats.filter((h)=>{
-        return(h.country!=req.params.name)
-    })
-    res.sendStatus(200,"OK");
-});
 
 //######################   API ****  ###############################//
 
