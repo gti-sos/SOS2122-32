@@ -68,9 +68,12 @@ app.get(BASE_API_URL+"/repeaters-stats/:name", (req,res)=>{
     if(req.params.name == "loadInitialData" && repeatersStats==0){
         repeatersStats = repeatersStats1;
         res.sendStatus(200, "OK")
-    } else if(repeatersName == 0){
+    } else if(repeatersName == 0 && req.params.name != "docs"){
         res.sendStatus(404, "NOT FOUND");
-    } else{
+    } else if(req.params.name == "docs"){
+        res.redirect("https://documenter.getpostman.com/view/20237623/UVyoVHPy");
+    } 
+    else{
         res.send(JSON.stringify(repeatersName,null,2));
     }
 });
