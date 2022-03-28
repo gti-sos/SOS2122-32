@@ -192,7 +192,7 @@ app.get(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
     if(req.params.name == "loadInitialData" && houseworkStats==0){
         houseworkStats = houseworkStats1;
         res.sendStatus(200, "OK")
-    } else if(houseworkName == 0){
+    } else if(houseworkName == 0 && req.params.name != "docs"){
         res.sendStatus(404, "NOT FOUND");
     } else if(req.params.name == "docs"){
         res.redirect("https://documenter.getpostman.com/view/20237276/UVyoUxSu");
