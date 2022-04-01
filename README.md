@@ -10,6 +10,6 @@
 -  **APIs**:
     - [http://sos2122-32.herokuapp.com/api/v1/housework-stats/docs](http://sos2122-32.herokuapp.com/api/v1/housework-stats/docs) (developed by [Javier Hidalgo Garcia](https://github.com/javighidalgo01))
     - [http://sos2122-32.herokuapp.com/api/v1/repeaters-stats/docs](http://sos2122-32.herokuapp.com/api/v1/repeaters-stats/docs) (developed by [Rafael Molino Alvarez](https://github.com/404))
-    - [https://sos2021-32.herokuapp.com/api/v1/ending-stats/docs](https://sos2021-32.herokuapp.com/api/v1/ending-stats/docs) (developed by [Sergio García Blanco](https://github.com/Sergarbla))
+    - [https://sos2021-32.herokuapp.com/api/v1/ending-stats/docs](https://sos2021-32.herokuapp.com/api/v1/ending-stats/docs) (developed by [Sergio García Blancop](https://github.com/Sergarbla))
 ```
 
