@@ -68,6 +68,68 @@ app.get(BASE_API_URL+"/housework-stats", (req,res)=>{
     }
 });
 
+app.get(BASE_API_URL+"/housework-stats/:country/:year", (req,res)=>{
+    houseworkStats = houseworkStats.filter(i=>{
+        return(i.country==req.params.country && i.year==req.params.year);
+    });
+    if(houseworkStats.length==0){
+        res.sendStatus(404,"NOT FOUND");
+    }else{
+        res.send(JSON.stringify(houseworkStats[0],null,2));
+    }
+});
+
+app.put(BASE_API_URL+"/housework-stats/:country/:year", (req,res)=>{
+    if(req.body.country && parseInt(req.body.year) && parseFloat(req.body.men) && parseFloat(req.body.women) && parseFloat(req.body.average) && Object.keys(req.body).length==5){
+    if(req.params.country==req.body.country && req.params.year==req.body.year && JSON.stringify(houseworkStats,null,2).includes(req.body.country)){
+    houseworkStats = houseworkStats.map((h)=>{
+        if(h.country==req.params.country&&h.year==req.params.year){
+            return(req.body);
+        }else{
+            return h;
+        }
+    })
+    res.sendStatus(201,"CREATED");
+}
+    else if(req.params.country != req.body.country && req.params.year !=req.body.year){
+    res.sendStatus(400,"BAD REQUEST");
+    }else{
+        res.sendStatus(404,"NOT FOUND");
+    }
+}else{
+    res.sendStatus(400,"BAD REQUEST");
+}
+});
+
+app.delete(BASE_API_URL+"/housework-stats", (req,res)=>{
+    houseworkStats = []
+    res.sendStatus(200,"OK");
+});
+
+app.delete(BASE_API_URL+"/housework-stats/:country/:year", (req,res)=>{
+    houseworkStats1 = houseworkStats.filter((h)=>{
+        return(h.country!=req.params.country && h.year!=req.params.year);
+    })
+    if(houseworkStats.length == houseworkStats1.length){
+        res.sendStatus(404,"NOT FOUND");
+    }else{
+        houseworkStats=houseworkStats1;
+        res.sendStatus(200,"OK");
+    }
+});
+
+app.delete(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
+    houseworkStats2 = houseworkStats.filter((h)=>{
+        return(h.country!=req.params.name)
+    })
+    if(houseworkStats.length == houseworkStats2.length){
+        res.sendStatus(404,"NOT FOUND");
+    }else{
+        houseworkStats= houseworkStats2;
+        res.sendStatus(200,"OK");
+    }
+});
+
 app.get(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
     var houseworkStats1 = [
         {
@@ -128,7 +190,7 @@ app.get(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
         res.redirect("https://documenter.getpostman.com/view/20237276/UVyoUxSu");
     } 
     else{
-        res.send(JSON.stringify(houseworkName,null,2));
+        res.send(JSON.stringify(houseworkName[0],null,2));
     }
 });
 
@@ -191,6 +253,7 @@ app.delete(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
     if(houseworkStats.length == houseworkStats2.length){
         res.sendStatus(404,"NOT FOUND");
     }else{
+        houseworkStats=houseworkStats2;
         res.sendStatus(200,"OK");
     }
 });
