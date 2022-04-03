@@ -78,6 +78,25 @@ app.get(BASE_API_URL+"/repeaters-stats/:name", (req,res)=>{
         res.send(JSON.stringify(repeatersName,null,2));
     }
 });
+//Busqueda por pais y año
+app.get(BASE_API_URL+"/repeaters-stats/:country/:year", (req, res)=>{
+    var countryName = req.params.country;
+    var year = req.params.year;
+    filteredCountriesYears = repeatersStats.filter((r)=>{
+        return(r.country == countryName && r.year == year);
+    })
+    if(filteredCountriesYears == 0){
+        res.sendStatus(404,"NOT FOUND");
+    }else{
+        res.send(JSON.stringify(filteredCountriesYears[0],null,2));
+    }
+
+    res.sendStatus(200,"OK");
+});
+
+
+
+
 
 app.post(BASE_API_URL+"/repeaters-stats", (req,res)=>{
     if(req.body.country && parseInt(req.body.year) && parseFloat(req.body.men) && parseFloat(req.body.women) && parseFloat(req.body.average) && Object.keys(req.body).length==5){
