@@ -9,5 +9,4 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm install
       - run: npm start &
-      - run: npm run test-repeaters
-      - run: npm run test-housework
+      - run: npm run test-repeaters && npm run test-housework
