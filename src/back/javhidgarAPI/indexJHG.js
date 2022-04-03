@@ -69,13 +69,13 @@ app.get(BASE_API_URL+"/housework-stats", (req,res)=>{
 });
 
 app.get(BASE_API_URL+"/housework-stats/:country/:year", (req,res)=>{
-    houseworkStats = houseworkStats.filter(i=>{
+    houseworkStats2 = houseworkStats.filter(i=>{
         return(i.country==req.params.country && i.year==req.params.year);
     });
-    if(houseworkStats.length==0){
+    if(0==houseworkStats2.length){
         res.sendStatus(404,"NOT FOUND");
     }else{
-        res.send(JSON.stringify(houseworkStats[0],null,2));
+        res.send(JSON.stringify(houseworkStats2[0],null,2));
     }
 });
 
