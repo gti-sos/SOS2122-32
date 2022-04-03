@@ -10,3 +10,4 @@ jobs:
       - run: npm install
       - run: npm start &
       - run: npm run test-repeaters
+      - run: npm run test-housework

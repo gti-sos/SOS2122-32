@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test-repeaters": "npx newman run ./tests/rafmolalv/backend.json -e ./tests/rafmolalv/env/local.json"
+    "test-repeaters": "npx newman run ./tests/rafmolalv/backend.json -e ./tests/rafmolalv/env/local.json",
+    "test-housework": "npx newman run ./tests/javhidgar/backend.json -e ./tests/javhidgar/env/local.json"
   },
   "author": "rafamolino",
   "license": "ISC",
