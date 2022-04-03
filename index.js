@@ -97,7 +97,7 @@ app.get(BASE_API_URL+"/repeaters-stats/:country/:year", (req, res)=>{
 
 
 
-
+//Crear un nuevo objeto
 app.post(BASE_API_URL+"/repeaters-stats", (req,res)=>{
     if(req.body.country && parseInt(req.body.year) && parseFloat(req.body.men) && parseFloat(req.body.women) && parseFloat(req.body.average) && Object.keys(req.body).length==5){
     result = repeatersStats.filter((h)=>{
@@ -122,6 +122,8 @@ app.put(BASE_API_URL+"/repeaters-stats", (req,res)=>{
     res.sendStatus(405,"METHOD NOT ALLOWED");
 });
 
+//Editar objeto
+
 app.put(BASE_API_URL+"/repeaters-stats/:name", (req,res)=>{
     if(req.body.country && parseInt(req.body.year) && parseFloat(req.body.men) && parseFloat(req.body.women) && parseFloat(req.body.average) && Object.keys(req.body).length==5){
     if(req.params.name==req.body.country){
@@ -142,10 +144,13 @@ app.put(BASE_API_URL+"/repeaters-stats/:name", (req,res)=>{
 }
 });
 
+//Borrar todos los datos
 app.delete(BASE_API_URL+"/repeaters-stats", (req,res)=>{
     repeatersStats = []
     res.sendStatus(200,"OK");
 });
+
+//Borrar un objeto dado un pais
 
 app.delete(BASE_API_URL+"/repeaters-stats/:name", (req,res)=>{
     repeatersStats = repeatersStats.filter((h)=>{
