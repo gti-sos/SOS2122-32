@@ -53,7 +53,7 @@ app.get(BASE_API_URL+"/housework-stats", (req,res)=>{
             res.sendStatus(400,"BAD REQUEST");
         }
         else if(req.query.offset&&req.query.limit){
-            res.send(JSON.stringify(houseworkStats.slice(req.query.offset,parseInt(req.query.offset)+parseInt(req.query.limit)+1),null,2));
+            res.send(JSON.stringify(houseworkStats.slice(req.query.offset,parseInt(req.query.offset)+parseInt(req.query.limit)),null,2));
         }
         else if(req.query.offset && !req.query.limit){
             res.send(JSON.stringify(houseworkStats.slice(req.query.offset),null,2))
