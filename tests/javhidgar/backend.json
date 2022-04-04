@@ -295,7 +295,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/Albanian",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats?country=Albanian&year=2011",
 					"host": [
 						"{{HOST}}"
 					],
@@ -303,8 +303,17 @@
 					"path": [
 						"api",
 						"v1",
-						"housework-stats",
-						"Albanian"
+						"housework-stats"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Albanian"
+						},
+						{
+							"key": "year",
+							"value": "2011"
+						}
 					]
 				}
 			},
@@ -398,7 +407,49 @@
 			"response": []
 		},
 		{
-			"name": "POST Campos inesperados 400 ",
+			"name": "POST 409",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {\r",
+							"    pm.response.to.have.status(409);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"Spain\",\r\n\"year\": 2012,\r\n\"women\": 21.7,\r\n\"men\": 3.47,\r\n\"average\": 12.58\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"api",
+						"v1",
+						"housework-stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Campos inesperados 400",
 			"event": [
 				{
 					"listen": "test",
