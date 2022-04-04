@@ -1,0 +1,21 @@
+{
+	"id": "36a2fcfa-d438-430f-bd3f-0027c6bbe116",
+	"name": "Heroku",
+	"values": [
+		{
+			"key": "PORT",
+			"value": "80",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "HOST",
+			"value": "http://sos2122-32.herokuapp.com",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2022-04-03T11:58:40.420Z",
+	"_postman_exported_using": "Postman/9.15.10"
+}
