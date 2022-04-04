@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "GET repeaters-stats load",
+			"name": "GET ending-stats load",
 			"event": [
 				{
 					"listen": "test",
@@ -34,14 +34,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats/loadInitialData",
+					"raw": "{{HOST}}/api/v1/ending-stats/loadInitialData",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"repeaters-stats",
+						"ending-stats",
 						"loadInitialData"
 					]
 				}
@@ -49,7 +49,7 @@
 			"response": []
 		},
 		{
-			"name": "GET repeaters-stats/albanian",
+			"name": "GET ending-stats/albanian",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -66,14 +66,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats/Albanian",
+					"raw": "{{HOST}}/api/v1/ending-stats/Albanian",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"repeaters-stats",
+						"ending-stats",
 						"Albanian"
 					]
 				}
@@ -81,7 +81,7 @@
 			"response": []
 		},
 		{
-			"name": "GET repeaters-stats/Grecia 404 NOT FOUND",
+			"name": "GET ending-stats/Grecia 404 NOT FOUND",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -98,14 +98,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats/Grecia",
+					"raw": "{{HOST}}/api/v1/ending-stats/Grecia",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"repeaters-stats",
+						"ending-stats",
 						"Grecia"
 					]
 				}
@@ -113,7 +113,7 @@
 			"response": []
 		},
 		{
-			"name": "POST repeaters-stats 201 CREATED",
+			"name": "POST ending-stats 201 CREATED",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -127,21 +127,21 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats",
+					"raw": "{{HOST}}/api/v1/ending-stats",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"repeaters-stats"
+						"ending-stats"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "POST repeaters-stats/Chile 409 CONFLICT",
+			"name": "POST ending-stats/Chile 409 CONFLICT",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -155,14 +155,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats",
+					"raw": "{{HOST}}/api/v1/ending-stats",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"repeaters-stats"
+						"ending-stats"
 					]
 				}
 			},
@@ -183,21 +183,21 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats",
+					"raw": "{{HOST}}/api/v1/ending-stats",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"repeaters-stats"
+						"ending-stats"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "GET repeaters-stats 200 OK",
+			"name": "GET ending-stats 200 OK",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -214,21 +214,21 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats",
+					"raw": "{{HOST}}/api/v1/ending-stats",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"repeaters-stats"
+						"ending-stats"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "PUT repeaters-stats 405 METHOD NOT ALLOWED",
+			"name": "PUT ending-stats 405 METHOD NOT ALLOWED",
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -242,21 +242,21 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats",
+					"raw": "{{HOST}}/api/v1/ending-stats",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"repeaters-stats"
+						"ending-stats"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "PUT repeaters-stats/Albanian",
+			"name": "PUT ending-stats/Albanian",
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -270,14 +270,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats/Albanian",
+					"raw": "{{HOST}}/api/v1/ending-stats/Albanian",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"repeaters-stats",
+						"ending-stats",
 						"Albanian"
 					]
 				}
@@ -285,7 +285,7 @@
 			"response": []
 		},
 		{
-			"name": "PUT repeaters-stats/Albanian 400 BAD REQUEST",
+			"name": "PUT ending-stats/Albanian 400 BAD REQUEST",
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -299,14 +299,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats/Albanian",
+					"raw": "{{HOST}}/api/v1/ending-stats/Albanian",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"repeaters-stats",
+						"ending-stats",
 						"Albanian"
 					]
 				}
@@ -314,7 +314,7 @@
 			"response": []
 		},
 		{
-			"name": "GET repeaters-stats 200 OK",
+			"name": "GET ending-stats 200 OK",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -331,21 +331,21 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats",
+					"raw": "{{HOST}}/api/v1/ending-stats",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"repeaters-stats"
+						"ending-stats"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "DELETE repeaters-stats/Albanian",
+			"name": "DELETE ending-stats/Albanian",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -359,14 +359,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats/Albanian",
+					"raw": "{{HOST}}/api/v1/ending-stats/Albanian",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"repeaters-stats",
+						"ending-stats",
 						"Albanian"
 					]
 				}
@@ -374,7 +374,7 @@
 			"response": []
 		},
 		{
-			"name": "DELETE repeaters-stats",
+			"name": "DELETE ending-stats",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -388,21 +388,21 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats",
+					"raw": "{{HOST}}/api/v1/ending-stats",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"repeaters-stats"
+						"ending-stats"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "GET repeaters-stats 200 OK Vacio",
+			"name": "GET ending-stats 200 OK Vacio",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -419,21 +419,21 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats",
+					"raw": "{{HOST}}/api/v1/ending-stats",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"repeaters-stats"
+						"ending-stats"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "GET repeaters-stats load",
+			"name": "GET ending-stats load",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -450,14 +450,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats/loadInitialData",
+					"raw": "{{HOST}}/api/v1/ending-stats/loadInitialData",
 					"host": [
 						"{{HOST}}"
 					],
 					"path": [
 						"api",
 						"v1",
-						"repeaters-stats",
+						"ending-stats",
 						"loadInitialData"
 					]
 				}

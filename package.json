@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "test": "npm run test-repeaters && test-housework && test-ending",
     "test-repeaters": "npx newman run ./tests/rafmolalv/backend.json -e ./tests/rafmolalv/env/local.json",
-    "test-housework": "npx newman run ./tests/javhidgar/backend.json -e ./tests/javhidgar/env/Heroku.json"
+    "test-ending": "npx newman run ./tests/sergarbla/backend.json -e ./tests/sergarbla/env/Heroku.json",
+    "test-houseworks": "npx newman run ./tests/javhidgar/backend.json -e ./tests/javhidgar/env/Heroku.json"
+    
   },
   "author": "rafamolino",
   "license": "ISC",
