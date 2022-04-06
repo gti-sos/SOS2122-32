@@ -269,7 +269,7 @@
 			"response": []
 		},
 		{
-			"name": "POST repeaters-stats/Spain409 CONFLICT",
+			"name": "POST repeaters-stats/Spain 409 CONFLICT",
 			"event": [
 				{
 					"listen": "test",
@@ -289,47 +289,6 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n\"country\": \"Spain\",\r\n\"year\": 2020,\r\n\"women\": 2.5,\r\n\"men\": 3.2,\r\n\"average\": 2.85\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats",
-					"host": [
-						"{{HOST}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"repeaters-stats"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "POST Campos inesperados 400 ",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 400\", function () {\r",
-							"    pm.response.to.have.status(400);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"country\": \"Spain\",\r\n\"year\": \"dd\",\r\n\"women\": 21.7,\r\n\"men\": 3.47,\r\n\"average\": 12.58\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -468,7 +427,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats/Albanian",
+					"raw": "{{HOST}}/api/v1/repeaters-stats/Albanian/2011",
 					"host": [
 						"{{HOST}}"
 					],
@@ -476,7 +435,8 @@
 						"api",
 						"v1",
 						"repeaters-stats",
-						"Albanian"
+						"Albanian",
+						"2011"
 					]
 				}
 			},
@@ -510,7 +470,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}/api/v1/repeaters-stats/Albanian",
+					"raw": "{{HOST}}/api/v1/repeaters-stats/Albanian/2011",
 					"host": [
 						"{{HOST}}"
 					],
@@ -518,7 +478,8 @@
 						"api",
 						"v1",
 						"repeaters-stats",
-						"Albanian"
+						"Albanian",
+						"2011"
 					]
 				}
 			},
