@@ -139,6 +139,35 @@
 			"response": []
 		},
 		{
+			"name": "GET Paginación",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/api/v1/repeaters-stats?offset=2&limit=2",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"repeaters-stats"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "2"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "POST repeaters-stats 201 CREATED",
 			"event": [
 				{
