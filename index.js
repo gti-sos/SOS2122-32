@@ -8,10 +8,14 @@ app.use(bodyParser.json());
 const BASE_API_URL = "/api/v1";
 const API_DOC_PORTAL = "https://documenter.getpostman.com/view/19904658/UVyoVdQr";
 
+const Datastore = require("nedb");
+
+db_repeaters = new Datastore();
+
 //######################   API Rafael Molino Alvarez  ###############################//
 
 const backendRma = require("./src/back/rafmolalvAPI/indexRma.js")
-backendRma(app);
+backendRma(app,db_repeaters);
 
 //######################   API Javier Hidalgo García  ###############################//
 const backendJHG = require("./src/back/javhidgarAPI/indexJHG.js")

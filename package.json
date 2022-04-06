@@ -9,14 +9,14 @@
     "test-repeaters": "npx newman run ./tests/rafmolalv/backend.json -e ./tests/rafmolalv/env/heroku.json",
     "test-ending": "npx newman run ./tests/sergarbla/backend.json -e ./tests/sergarbla/env/heroku.json",
     "test-houseworks": "npx newman run ./tests/javhidgar/backend.json -e ./tests/javhidgar/env/Heroku.json"
-    
   },
   "author": "rafamolino",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.2",
     "cool-ascii-faces": "^1.3.4",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "nedb": "^1.8.0"
   },
   "repository": {
     "type": "git",
