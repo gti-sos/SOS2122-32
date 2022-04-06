@@ -354,27 +354,28 @@ module.exports = (app, db) => {
             res.sendStatus(400,"BAD REQUEST");
         }
         else{
-            db.find({},function(err,registro){
+            
+            db.find({country: req.body.country, year: req.body.year}, function(err,docs){
                 if(err){
                     res.sendStatus(500,"INTERNAL SERVER ERROR");
-                    return;
                 }
-
-                registro = registro.filter((reg)=>{
-                    return(req.body.country==reg.country && req.body.year == reg.year)
-                })
-                if(registro.length != 0){
-                    res.sendStatus(409,"CONFLICT");
-                }else{
-                    db.insert(req.body);
-                    res.sendStatus(201,"CREATED");
+                else{
+                    if(docs!=0){
+                        res.sendStatus(409, "CONFLICT");
+                    }
+                    else{
+                        db.insert(req.body,function(err,newDocs){
+                            if(err){
+                                res.sendStatus(500,"INTERNAL SERVER ERROR");
+                            }
+                            else{
+                                res.sendStatus(201, "CREATED");
+                            }
+                        });
+                    }
                 }
-
             })
-
-
         }
-
     });
 
     app.post(BASE_API_URL + "/repeaters-stats/:name", (req, res) => {
