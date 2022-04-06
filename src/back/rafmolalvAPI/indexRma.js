@@ -338,22 +338,43 @@ module.exports = (app, db) => {
 
 
 
+    function comprobacion_parametros(req){
+        eturn (req.body.country == null |
+            req.body.year == null |
+            req.body.women == null |
+            req.body.men == null |
+            req.body.average == null);
+    };
 
     //Crear un nuevo objeto
     app.post(BASE_API_URL + "/repeaters-stats", (req, res) => {
-        if (req.body.country && parseInt(req.body.year) && parseFloat(req.body.men) && parseFloat(req.body.women) && parseFloat(req.body.average) && Object.keys(req.body).length == 5) {
-            result = repeatersStats.filter((h) => {
-                return (JSON.stringify(h, null, 2) === JSON.stringify(req.body, null, 2));
-            });
-            if (result != 0) {
-                res.sendStatus(409, "CONFLICT");
-            } else {
-                repeatersStats.push(req.body);
-                res.sendStatus(201, "CREATED");
-            }
-        } else {
-            res.sendStatus(400, "BAD REQUEST");
+
+
+        if(comprobacion_parametros(req)){
+            res.sendStatus(400,"BAD REQUEST");
         }
+        else{
+            db.find({},function(err,registro){
+                if(err){
+                    res.sendStatus(500,"INTERNAL SERVER ERROR");
+                    return;
+                }
+
+                registro = registro.filter((reg)=>{
+                    return(req.body.country==reg.country && req.body.year == reg.year)
+                })
+                if(registro.length != 0){
+                    res.sendStatus(409,"CONFLICT");
+                }else{
+                    db.insert(req.body);
+                    res.sendStatus(201,"CREATED");
+                }
+
+            })
+
+
+        }
+
     });
 
     app.post(BASE_API_URL + "/repeaters-stats/:name", (req, res) => {
@@ -366,24 +387,42 @@ module.exports = (app, db) => {
 
     //Editar objeto
 
-    app.put(BASE_API_URL + "/repeaters-stats/:name", (req, res) => {
-        if (req.body.country && parseInt(req.body.year) && parseFloat(req.body.men) && parseFloat(req.body.women) && parseFloat(req.body.average) && Object.keys(req.body).length == 5) {
-            if (req.params.name == req.body.country) {
-                repeatersStats = repeatersStats.map((h) => {
-                    if (h.country == req.params.name) {
-                        return (req.body);
-                    } else {
-                        return h;
-                    }
-                })
-                res.sendStatus(201, "CREATED");
-            }
-            else {
-                res.sendStatus(400, "BAD REQUEST");
-            }
-        } else {
-            res.sendStatus(400, "BAD REQUEST");
+    app.put(BASE_API_URL + "/repeaters-stats/:country/:year", (req, res) => {
+
+        if(comprobacion_parametros(req)){
+            res.sendStatus(400,"BAD REQUEST");
         }
+
+        n_country = req.params.country;
+        n_year = req.params.year;
+        n_body = req.params.body;
+
+        db.find({},function(err,registro){
+            if(err){
+                res.sendStatus(500,"INTERNAL SERVER ERROR");
+                return;
+            }
+
+            registro = registro.filter((reg)=>{
+                return(n_country==reg.country && n_year == reg.year)//se comprueba si existe ya ese dato
+            })
+            if(registro.length != 0){
+                res.sendStatus(404,"NOT FOUND");
+                return;
+            }
+            if(n_country != n_body.country || n_year != n_body.year){//se comrpueba si los nuevos datos son iguales a los que ya habia
+                res.sendStatus(400,"BAD REQUEST");
+                return;
+            }
+
+            db.update({$and:[{country: String(n_country)}, {year: parseInt(n_year)}]}, {$set: n_body}, {},function(err, nU) {
+                if (err) {
+                    res.sendStatus(500, "INTERNAL SERVER ERROR");
+                }else{
+                    res.sendStatus(200,"UPDATED");
+                }
+            });
+        })
     });
 
     //Borrar todos los datos
@@ -394,9 +433,9 @@ module.exports = (app, db) => {
 
     //Borrar un objeto dado un pais
 
-    app.delete(BASE_API_URL + "/repeaters-stats/:name", (req, res) => {
+    app.delete(BASE_API_URL + "/repeaters-stats/:country", (req, res) => {
         repeatersStats = repeatersStats.filter((h) => {
-            return (h.country != req.params.name)
+            return (h.country != req.params.country)
         })
         res.sendStatus(200, "OK");
     });
