@@ -339,7 +339,7 @@ module.exports = (app, db) => {
 
 
     function comprobacion_parametros(req){
-        eturn (req.body.country == null |
+        return (req.body.country == null |
             req.body.year == null |
             req.body.women == null |
             req.body.men == null |
@@ -354,28 +354,26 @@ module.exports = (app, db) => {
             res.sendStatus(400,"BAD REQUEST");
         }
         else{
-            
-            db.find({country: req.body.country, year: req.body.year}, function(err,docs){
+            db.find({},function(err,registro){
                 if(err){
                     res.sendStatus(500,"INTERNAL SERVER ERROR");
                 }
-                else{
-                    if(docs!=0){
-                        res.sendStatus(409, "CONFLICT");
-                    }
-                    else{
-                        db.insert(req.body,function(err,newDocs){
-                            if(err){
-                                res.sendStatus(500,"INTERNAL SERVER ERROR");
-                            }
-                            else{
-                                res.sendStatus(201, "CREATED");
-                            }
-                        });
-                    }
+
+                registro = registro.filter((reg)=>{
+                    return(req.body.country==reg.country && req.body.year == reg.year)
+                })
+                if(registro.length != 0){
+                    res.sendStatus(409,"CONFLICT");
+                }else{
+                    db.insert(req.body);
+                    res.sendStatus(201,"CREATED");
                 }
+
             })
+
+
         }
+
     });
 
     app.post(BASE_API_URL + "/repeaters-stats/:name", (req, res) => {
