@@ -151,7 +151,7 @@ module.exports = (app, db) => {
                         });
 
                     }
-                    //existe to pero no from
+                    //to pero no from
                     else if (from == null && to != null) {
 
                         db.find({ $or: [{ year: { $lte: parseInt(to) } }] }, function (err, docs) {
@@ -169,7 +169,7 @@ module.exports = (app, db) => {
 
 
                     }
-                    //EXISTE EL FROM PERO NO EL TO
+                    //from pero no to
                     else {
                         // NO HAY OFFSET Y LIMIT
                         db.find({ $or: [{ year: { $gte: parseInt(from) } }] }, function (err, docs) {
