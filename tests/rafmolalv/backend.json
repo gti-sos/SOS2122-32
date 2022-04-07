@@ -228,6 +228,48 @@
 			"response": []
 		},
 		{
+			"name": "POST repeaters-stats/Albanian 405 METHOD NOT ALLOWED",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"Spain\",\r\n\"year\": 2014,\r\n\"women\": 21.7,\r\n\"men\": 3.47,\r\n\"average\": 12.58\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{HOST}}/api/v1/repeaters-stats/Albanian\n",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"repeaters-stats",
+						"Albanian\n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "POST repeaters-stats 201 CREATED",
 			"event": [
 				{
@@ -405,8 +447,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 201\", function () {\r",
-							"    pm.response.to.have.status(201);\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							""
 						],
