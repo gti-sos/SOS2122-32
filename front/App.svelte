@@ -11,7 +11,7 @@
 	<h2>Equipo</h2>
 	<p><a href="https://github.com/javighidalgo01">Javier Hidalgo García</a></p>
 	<p><a href="https://github.com/rafamolino">Rafael Molino Alvarez</a></p>
-	<p>Sergio Jesús García Blanco</p>
+	<p><a href="https://github.com/sergarbla">Sergio Jesús García Blanco</a></p>
 	<h2>Descripción del proyecto</h2>
 	<p>
 		Nuestras fuentes de información están orientadas a analizar la relación
@@ -41,6 +41,11 @@
 		><button color="blue">API v1</button></a
 	>
 	<a href="https://sos2122-32.herokuapp.com/#/repeaters-repeaters"><button>Interfaz</button></a>
+	<p>Sergio Jesús García Blanco</p>
+	<a href="https://sos2021-32.herokuapp.com/api/v1/ending-stats/docs"
+		><button color="blue">API v1</button></a
+	>
+	<a href="/sergarbla/apiSGB.svelte"><button>Interfaz</button></a>
 	
 	
 
