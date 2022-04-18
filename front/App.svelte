@@ -4,11 +4,12 @@
 	import Home from "./Home.svelte";
 	import ApiRMA from "./ApiRMA.svelte";
 
-	export let name;
 
 	const routes={
 		'/' : Home,
-		'/apiJHG': ApiJHG
+		'/apiJHG': ApiJHG,
+		'/ApiRMA': ApiRMA
+
 	};
 
 </script>

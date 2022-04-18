@@ -2,12 +2,11 @@
 	import ApiJHG from "./ApiJHG.svelte";
 	import ApiRMA from "./ApiRMA.svelte";
 
-	export let name;
 
 </script>
 
 <main>
-	<h1>{name}</h1>
+	<h1>SOS2122-32</h1>
 	<h2>Equipo</h2>
 	<p><a href="https://github.com/javighidalgo01">Javier Hidalgo García</a></p>
 	<p><a href="https://github.com/rafamolino">Rafael Molino Alvarez</a></p>
@@ -40,7 +39,7 @@
 	<a href="http://sos2122-32.herokuapp.com/api/v1/repeaters-stats/docs"
 		><button color="blue">API v1</button></a
 	>
-	<a href="https://sos2122-32.herokuapp.com/#/repeaters-repeaters"><button>Interfaz</button></a>
+	<a href="/#/ApiRMA"><button>Interfaz</button></a>
 	<p>Sergio Jesús García Blanco</p>
 	<a href="https://sos2021-32.herokuapp.com/api/v1/ending-stats/docs"
 		><button color="blue">API v1</button></a
