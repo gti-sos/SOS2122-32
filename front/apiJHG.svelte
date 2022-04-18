@@ -18,19 +18,19 @@ loading
 	<thead>
 		<tr>
 			<th>
-				Country
+				País
 			</th>
 			<th>
-				Year
+				Año
 			</th>
 			<th>
-				Women
+				Mujeres
 			</th>
 			<th>
-				Men
+				Hombres
 			</th>
 			<th>
-				Average
+				Media
 			</th>
 		</tr>
 	</thead>
