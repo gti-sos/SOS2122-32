@@ -108,7 +108,11 @@ app.delete(BASE_API_URL+"/housework-stats", (req,res)=>{
 
 app.delete(BASE_API_URL+"/housework-stats/:country/:year", (req,res)=>{
     houseworkStats1 = houseworkStats.filter((h)=>{
-        return(h.country!=req.params.country && h.year!=req.params.year);
+        if(h.country != req.params.country){
+            return h;
+        }else if(h.year != req.params.year){
+                return h;
+        }
     })
     if(houseworkStats.length == houseworkStats1.length){
         res.sendStatus(404,"NOT FOUND");
@@ -197,7 +201,11 @@ app.get(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
 app.post(BASE_API_URL+"/housework-stats", (req,res)=>{
     if(req.body.country && parseInt(req.body.year) && parseFloat(req.body.men) && parseFloat(req.body.women) && parseFloat(req.body.average) && Object.keys(req.body).length==5){
     result = houseworkStats.filter((h)=>{
+        if(req.body.country == h.country && req.body.year==h.year){
+            return h;
+        }else{
         return(JSON.stringify(h,null,2)===JSON.stringify(req.body,null,2));
+        }
     });
     if(result != 0){
         res.sendStatus(409,"CONFLICT");

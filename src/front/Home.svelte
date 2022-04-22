@@ -35,6 +35,7 @@
 		><button color="blue">API v1</button></a
 	>
 	<a href="/#/ApiJHG"><button>Interfaz</button></a>
+	<a href="/api/v1/housework-stats"><button>Backend</button></a>
 	<p>Rafael Molino Alvarez</p>
 	<a href="http://sos2122-32.herokuapp.com/api/v1/repeaters-stats/docs"
 		><button color="blue">API v1</button></a
