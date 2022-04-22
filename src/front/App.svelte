@@ -3,12 +3,15 @@
 	import ApiJHG from "./ApiJHG.svelte";
 	import Home from "./Home.svelte";
 	import ApiRMA from "./ApiRMA.svelte";
+	import Info from "./Info.svelte";
+
 
 
 	const routes={
 		'/' : Home,
 		'/apiJHG': ApiJHG,
-		'/ApiRMA': ApiRMA
+		'/ApiRMA': ApiRMA,
+		'/info': Info
 
 	};
 
