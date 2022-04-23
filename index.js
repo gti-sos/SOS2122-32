@@ -10,12 +10,14 @@ const API_DOC_PORTAL = "https://documenter.getpostman.com/view/19904658/UVyoVdQr
 
 const Datastore = require("nedb");
 
-db_repeaters = new Datastore();
 
 //######################   API Rafael Molino Alvarez  ###############################//
+const backendRma = require("./src/back/rafmolalvAPI/indexRma")
+const backendRmaV2 = require("./src/back/rafmolalvAPI/indexRmaV2")
+db_repeaters = new Datastore();
 
-const backendRma = require("./src/back/rafmolalvAPI/indexRma.js")
-backendRma(app,db_repeaters);
+backendRma.register(app,db_repeaters);
+backendRmaV2.register(app,db_repeaters);
 
 //######################   API Javier Hidalgo García  ###############################//
 const backendJHG = require("./src/back/javhidgarAPI/indexJHG.js")

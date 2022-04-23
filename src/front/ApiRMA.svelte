@@ -3,7 +3,7 @@
 	import Table from "sveltestrap/src/Table.svelte";
 	import Button from "sveltestrap/src/Button.svelte";
 
-	var BASE_API_PATH = "/api/v1/repeaters-stats";
+	var BASE_API_PATH = "/api/v2/repeaters-stats";
 
 	let repeaters = [];
 	let newDato = {
@@ -21,13 +21,13 @@
 
 	async function getrepeaters() {
 		console.log("Fetching ending...");
-		const res = await fetch("/api/v1/repeaters-stats");
+		const res = await fetch("/api/v2/repeaters-stats");
 		repeaters = await res.json();
 		console.log("Recevider: " + repeaters.length);
 	}
 	async function getrepeatersInicial() {
 		console.log("Fetching ending...");
-		const res = await fetch("/api/v1/repeaters-stats/loadInitialData").then(
+		const res = await fetch("/api/v2/repeaters-stats/loadInitialData").then(
 			function (res) {
 				getrepeaters();
 			}
@@ -38,7 +38,7 @@
 
 	async function insertDato() {
 		console.log("Inserting: " + JSON.stringify(newDato));
-		const res = await fetch("/api/v1/repeaters-stats", {
+		const res = await fetch("/api/v2/repeaters-stats", {
 			method: "POST",
 			body: JSON.stringify(newDato),
 			headers: {
@@ -50,14 +50,45 @@
 		console.log("Done");
 	}
 
-	/*async function borrarRegistros() {
-		console.log("Deleting stats....");
-		const res = await fetch("/api/v1/repeaters-stats/", {
+	async function eliminarDatos() {
+		console.log("Deleting: " + JSON.stringify(newDato));
+		const res = await fetch("/api/v2/repeaters-stats", {
 			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+			},
 		}).then(function (res) {
 			getrepeaters();
 		});
-	}*/
+		console.log("Done");
+	}
+
+	async function eliminarDato(country,year) {
+		console.log("Deleting: " + JSON.stringify(newDato));
+		const res = await fetch("/api/v2/repeaters-stats/"+country+"/"+year, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		}).then(function (res) {
+			getrepeaters();
+		});
+		console.log("Done");
+	}
+
+    async function editarDato(name) {
+		console.log("Inserting: " + JSON.stringify(newDato));
+		const res = await fetch("/api/v2/repeaters-stats/"+name, {
+			method: "PUT",
+            body: JSON.stringify(newDato),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		}).then(function (res) {
+			getrepeaters();
+		});
+		console.log("Done");
+	}
 </script>
 
 <main>
@@ -94,16 +125,15 @@
 						<td>{rep.women}</td>
 						<td>{rep.men}</td>
 						<td>{rep.average}</td>
+						<td><Button outline color= "primary" on:click={eliminarDato(rep.country,rep.year)}>Eliminar</Button>
+                            <Button outline color= "primary" on:click={editarDato(rep.country)}>Editar</Button>
+                        </td>
 					</tr>
 				{/each}
 			</tbody>
 		</Table>
-		<td
-			><Button outline color="primary" on:click={getrepeatersInicial}
-				>Cargar datos</Button
-			></td
-		>
-		
-		
+		<td><Button outline color="primary" on:click={getrepeatersInicial}>Cargar datos</Button></td>
+		<td><Button outline color="primary" on:click={eliminarDatos}>Eliminar datos</Button></td>
+
 	{/await}
 </main>

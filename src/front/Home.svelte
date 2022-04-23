@@ -41,7 +41,7 @@
 		><button color="blue">API v1</button></a
 	>
 	<a href="/#/ApiRMA"><button>Interfaz</button></a>
-	<a href="/api/v1/repeaters-stats"><button>Backend</button></a>
+	<a href="/api/v2/repeaters-stats"><button>Backend</button></a>
 	<p>Sergio Jesús García Blanco</p>
 	<a href="https://sos2021-32.herokuapp.com/api/v1/ending-stats/docs"
 		><button color="blue">API v1</button></a

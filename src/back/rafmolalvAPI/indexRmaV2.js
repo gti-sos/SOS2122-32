@@ -1,6 +1,6 @@
 const bodyParser = require("body-parser");
-const BASE_API_URL = "/api/v1";
-const RMA_BASE_API_URL = "/api/v1/repeaters-stats";
+const BASE_API_URL = "/api/v2";
+const RMA_BASE_API_URL = "/api/v2/repeaters-stats";
 
 
 var repeatersStats = [];
@@ -65,7 +65,7 @@ module.exports.register = (app, db) => {
 
     //Documentacion
     app.get(RMA_BASE_API_URL + "/docs", (req, res) => {
-        res.redirect("https://documenter.getpostman.com/view/20237623/UVyoVHPy");
+        res.redirect("https://documenter.getpostman.com/view/20237623/UyrAFxCX");
     });
 
     //LoadInitialData
@@ -451,11 +451,29 @@ module.exports.register = (app, db) => {
 
     //Borrar un objeto dado un pais
 
-    app.delete(BASE_API_URL + "/repeaters-stats/:country", (req, res) => {
-        repeatersStats = repeatersStats.filter((h) => {
-            return (h.country != req.params.country)
-        })
-        res.sendStatus(200, "OK");
+    app.delete(RMA_BASE_API_URL + "/:country/:year", (req, res) => {
+        var countryR = req.params.country;
+        var yearR = req.params.year;
+        db.find({ country: countryR, year: parseInt(yearR) }, {}, (err, filteredList) => {
+            if (err) {
+                res.sendStatus(500, "ERROR EN CLIENTE");
+                return;
+            }
+            if (filteredList == 0) {
+                res.sendStatus(404, "NOT FOUND");
+                return;
+            }
+            db.remove({ country: countryR, year: parseInt(yearR) }, {}, (err, numRemoved) => {
+                if (err) {
+                    res.sendStatus(500, "ERROR EN CLIENTE");
+                    return;
+                }
+
+                res.sendStatus(200, "DELETED");
+                return;
+
+            });
+        });
     });
 
 };
