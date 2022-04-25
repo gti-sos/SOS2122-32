@@ -16,7 +16,7 @@
     onMount(getrepeaters);
     async function getrepeaters(){
         console.log("Fetching ending....");
-        const res = await fetch("/api/v2/ending-stats/"+params.country+"/"+params.year);
+        const res = await fetch("/api/v1/ending-stats/"+params.country+"/"+params.year);
         if(res.ok){
             const data = await res.json();
             ending = data;

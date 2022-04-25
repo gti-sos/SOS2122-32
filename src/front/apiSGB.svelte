@@ -39,7 +39,7 @@
 		}
     }
 	async function insertPollution(){
-        console.log("Inserting pollution...."+JSON.stringify(newEnding));
+        console.log("Inserting ending...."+JSON.stringify(newEnding));
         const res = await fetch("/api/v1/ending-stats",
 			{
 				method: "POST",
@@ -57,7 +57,7 @@
 		}
     }
 	async function BorrarPollution(countryDelete, yearDelete){
-        console.log("Deleting pollution....");
+        console.log("Deleting polution....");
         const res = await fetch("/api/v1/ending-stats/"+countryDelete+"/"+yearDelete,
 			{
 				method: "DELETE"
