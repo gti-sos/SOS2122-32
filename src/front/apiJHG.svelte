@@ -222,7 +222,11 @@ loading
 						<td>{h.men}</td>
 						<td>{h.average}</td>
                         <td><Button outline color= "primary" on:click={eliminarDato(h.country,h.year)}>Eliminar</Button>
-                            <Button outline color= "primary" on:click={editarDato(h.country)}>Editar</Button>
+                            <Button outline color="warning" on:click={function (){
+								window.location.href = `/#/housework-stats/${h.country}/${h.year}`
+							}}>
+								Editar
+							</Button>
                         </td>
 					</tr>
 				{/each}

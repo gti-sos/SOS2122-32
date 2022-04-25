@@ -4,7 +4,7 @@
 	import Home from "./Home.svelte";
 	import ApiRMA from "./ApiRMA.svelte";
 	import EditApiSGB from "./editApiSGB.svelte";
-	
+	import EditApiJHG from "./editApiJHG.svelte";
 	import Info from "./Info.svelte";
 	import ApiSgb from "./apiSGB.svelte";
 
@@ -16,6 +16,7 @@
 		'/ApiRMA': ApiRMA,
 		'/apiSGB': ApiSgb,
 		"/ending-stats/:country/:year": EditApiSGB, 
+		"/housework-stats/:country/:year": EditApiJHG,
 		'/info': Info
 
 	};
