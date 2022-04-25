@@ -145,7 +145,7 @@ module.exports = (app) =>{
 
     //LoadInitialData
 
-    app.get(RMA_BASE_API_URL + "/loadInitialData", (req,res) => {
+    app.get(RMA_BASE_API_URL + "/ending-stats/loadInitialData", (req,res) => {
 
 
         if(repeatersStats.length === 0){
@@ -159,7 +159,7 @@ module.exports = (app) =>{
 
     //Busqueda por pais
 
-    app.get(RMA_BASE_API_URL+"/:country", (req, res) => {
+    app.get(RMA_BASE_API_URL+"/ending-stats/:country", (req, res) => {
         var Country = req.params.country;
         filtered = repeatersStats.filter((e) => {
             return (e.country == Country);
@@ -174,7 +174,7 @@ module.exports = (app) =>{
 
 
     //Busqueda por pais y año
-    app.get(RMA_BASE_API_URL+"/:country/:year", (req,res) => {
+    app.get(RMA_BASE_API_URL+"/ending-stats/:country/:year", (req,res) => {
         var Country = req.params.country;
         var Year = req.params.year;
         filtered = repeatersStats.filter( (e) => {
@@ -269,11 +269,31 @@ app.delete(BASE_API_URL+"/ending-stats", (req,res)=>{
 
 //Borrar un objeto dado un pais
 
-app.delete(BASE_API_URL+"/ending-stats/:name", (req,res)=>{
-    endingStats = endingStats.filter((h)=>{
-        return(h.country!=req.params.name)
-    })
-    res.sendStatus(200,"OK");
+app.delete(BASE_API_URL+"/ending-stats/:country/:year", (req,res)=>{
+    var Country = req.params.country;  
+    var Year = req.params.year; 
+
+    db.find({country: Country, year: parseInt(Year)}, {}, (err, filteredList)=>{
+
+        if (err){
+            res.sendStatus(500,"ERROR EN CLIENTE");
+            return;
+        }
+        if(filteredList==0){
+            res.sendStatus(404,"NOT FOUND");
+            return;
+        }
+        db.remove({country: Country, year: parseInt(Year)}, {}, (err, rem)=>{
+            if (err){
+                res.sendStatus(500,"ERROR EN CLIENTE");
+                return;
+            }
+        
+            res.sendStatus(200,"OK");
+            return;
+            
+        });
+    });
 });
 
 };

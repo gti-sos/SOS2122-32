@@ -88,6 +88,7 @@
 		});
 		console.log("Done");
 	}
+	
 </script>
 <main>
 {#await housework}
