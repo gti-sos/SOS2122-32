@@ -77,6 +77,7 @@
 		console.log("Fetching ending...");
 		const res = await fetch("/api/v1/housework-stats/loadInitialData").then(
 			function (res) {
+				window.alert("Datos cargados");
 				getHousework();
 			}
 		);
@@ -111,20 +112,7 @@
 				"Content-Type": "application/json",
 			},
 		}).then(function (res) {
-			getHousework();
-		});
-		console.log("Done");
-	}
-
-    async function editarDato(name) {
-		console.log("Inserting: " + JSON.stringify(newDato));
-		const res = await fetch("/api/v1/housework-stats/"+name, {
-			method: "PUT",
-            body: JSON.stringify(newDato),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		}).then(function (res) {
+			window.alert("Eliminado");
 			getHousework();
 		});
 		console.log("Done");
@@ -138,6 +126,7 @@
 				"Content-Type": "application/json",
 			},
 		}).then(function (res) {
+			window.alert("Datos eliminados");
 			getHousework();
 		});
 		console.log("Done");

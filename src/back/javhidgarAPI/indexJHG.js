@@ -52,7 +52,7 @@ app.get(BASE_API_URL+"/housework-stats", (req,res)=>{
         if(list.length != Object.keys(req.query).length){
             res.sendStatus(400,"BAD REQUEST");
         }
-        else if(req.query.from && req.query.to){
+        else if(req.query.from && req.query.to && req.query.limit && req.query.offset){
             houseworkStats2 = houseworkStats.filter(h=>{
                 return(h.year >= req.query.from && h.year<=req.query.to);
             });

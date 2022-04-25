@@ -26,7 +26,6 @@
             updatedMen = ending.men;
             updatedAverage = ending.average;
         }else{
-            Errores(res.status);
             getrepeaters();
         }
     }
@@ -45,7 +44,8 @@
 				headers: {
 					"Content-Type": "application/json"
 				}
-			}).then(function(){
+			}).then(function(res){
+                Errores(res.status);
                 getrepeaters();
             }); 
     }
@@ -66,9 +66,8 @@
         }
         if(code == 405){
             msg = "Método no permitido"
-        }
-        if(code == 400){
-            msg= "Datos Incorrectos"
+        }if(code == 201){
+            msg = "Actualizado"
         }
         window.alert(msg)
             return;
