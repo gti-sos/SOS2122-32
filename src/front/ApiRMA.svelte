@@ -17,18 +17,67 @@
 	let okMsg = "";
 	let visible = false;
 	let visibleOk = false;
-	onMount(getrepeaters);
+	let offset1 = 0;
+	let offset2 = 0;
+	let limit = 10;
+	let page = 1;
+	let lastPage = 1;
+	let total = 0;
+	let from = null;
+	let to = null;
+	onMount(getrepeaters2);
 
 	async function getrepeaters() {
-		console.log("Fetching ending...");
-		const res = await fetch("/api/v2/repeaters-stats");
-		repeaters = await res.json();
-		console.log("Recevider: " + repeaters.length);
+		console.log("Fetching entries....");
+		let cadena = `/api/v2/repeaters-stats?from=${from}&&to=${to}&&`;
+		const res = await fetch(cadena);
+		if (res.ok) {
+			const data = await res.json();
+			repeaters = data;
+			console.log("Received entries: " + repeaters.length);
+		} else {
+			console.log("Error");
+		}
+	}
+
+	async function getrepeaters2() {
+		console.log("Fetching entries....");
+		let cadena =
+			"/api/v2/repeaters-stats?limit=" + limit + "&offset=" + offset1;
+		const res = await fetch(cadena);
+		if (res.ok) {
+			//let cadenaPag = cadena.split("?limit=" + limit + "&offset=" + offset1);
+			paginacion();
+			const data = await res.json();
+			repeaters = data;
+			console.log("Received entries: " + repeaters.length);
+		}
+	}
+
+	async function paginacion() {
+		const data = await fetch(BASE_API_URL + "/repeaters-stats");
+		if (data.status == 200) {
+			const json = await data.json();
+			total = json.length;
+			cambiapag(page, offset1);
+		}
+	}
+
+	function cambiapag(page1, offset2) {
+		lastPage = Math.ceil(total / 10);
+		console.log("Last page = " + lastPage);
+		if (page1 !== page) {
+			offset1 = offset2;
+			page = page1;
+			getrepeaters2();
+			getrepeaters();
+		}
 	}
 	async function getrepeatersInicial() {
 		console.log("Fetching ending...");
 		const res = await fetch("/api/v2/repeaters-stats/loadInitialData").then(
 			function (res) {
+				getrepeaters2();
 				getrepeaters();
 			}
 		);
@@ -95,6 +144,39 @@
 	{#await repeaters}
 		loading
 	{:then repeaters}
+	<Table bordered>
+		<thead>
+			<tr>
+				<th>Fecha inicial</th>
+				<th>Fecha final</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="number" min="2000" bind:value="{from}"></td>
+				<td><input type="number" min="2000" bind:value="{to}"></td>
+				<td align="center"><Button outline color="dark" on:click="{()=>{
+					if (from == null || to == null) {
+						window.alert('Los campos fecha inicial y fecha final no pueden estar vacíos')
+					}else{
+						getrepeaters();
+					}
+				}}">
+					Buscar
+					</Button> 
+				</td>
+				<td align="center"><Button outline color="info" on:click="{()=>{
+					from = null;
+					to = null;
+					getrepeaters();
+					
+				}}">
+					Limpiar Búsqueda
+					</Button>
+				</td>
+			</tr>
+		</tbody>
+	</Table>
 		<Table bordered>
 			<thead>
 				<tr>

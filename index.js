@@ -21,7 +21,8 @@ backendRmaV2.register(app,db_repeaters);
 
 //######################   API Javier Hidalgo García  ###############################//
 const backendJHG = require("./src/back/javhidgarAPI/indexJHG.js")
-backendJHG(app);
+db_housework = new Datastore();
+backendJHG(app,db_housework);
 
 //######################   API Sergio García Blanco  ###############################//
 const backendSGB = require("./src/back/sergarblaAPI/indexSGB.js")

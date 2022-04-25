@@ -4,29 +4,29 @@ const BASE_API_URL = "/api/v1";
 var houseworkStats = [];
 module.exports = (app) =>{
 
-function aux(list,h,req){
-    house = h.filter(i=>{
-        if(req.country && list[0]==req.country){
-            return(i.country==req.country);
-        }else if(req.year && list[0]==req.year){
-            return(i.year==req.year);
-        }else if(req.men && list[0]==req.men){
-            return(i.men==req.men);
-        }else if(req.women && list[0]==req.women){
-            return(i.women==req.women);
-        }else if(req.average && list[0]==req.average){
-            return(i.average==req.average);
+    function aux(list,h,req){
+        house = h.filter(i=>{
+            if(req.country && list[0]==req.country){
+                return(i.country==req.country);
+            }else if(req.year && list[0]==req.year){
+                return(i.year==req.year);
+            }else if(req.men && list[0]==req.men){
+                return(i.men==req.men);
+            }else if(req.women && list[0]==req.women){
+                return(i.women==req.women);
+            }else if(req.average && list[0]==req.average){
+                return(i.average==req.average);
+            }else{
+                return h;
+            }
+        });
+        list.shift();
+        if(list == 0){
+            return house;
         }else{
-            return h;
+            return aux(list,house,req); 
         }
-    });
-    list.shift();
-    if(list == 0){
-        return house;
-    }else{
-        return aux(list,house,req); 
     }
-}
 
 app.get(BASE_API_URL+"/housework-stats", (req,res)=>{
     if(req.query.country || req.query.year || req.query.men || req.query.women || req.query.average){

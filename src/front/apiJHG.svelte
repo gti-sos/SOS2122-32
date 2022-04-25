@@ -15,13 +15,62 @@
 	};
     let errorMsg = "";
 	let okMsg = "";
+	let from = null;
+	let to = null;
+	let offset = 0;
+	let limit = 10;
+	let mP = 0;
 	let visible = false;
 	let visibleOk = false;
     onMount(getHousework);
     async function getHousework(){
         console.log("Fetching ending...");
-        const res = await fetch("/api/v1/housework-stats")
-        housework=await res.json();
+		let page = `/api/v1/housework-stats?limit=${limit}&&offset=${offset*10}&&`;
+		if (from != null) {
+			page = page + `from=${from}&&`
+		}
+		if (to != null) {
+			page = page + `to=${to}&&`
+		}
+        const res = await fetch(page);
+		if(res.ok){
+			let cPage = page.split(`limit=${limit}&&offset=${offset*10}`);
+			mPFunction(cPage[0]+cPage[1]);
+            const data = await res.json();
+            housework = data;
+        }else{
+			Errores(res.status);
+		}
+    }
+
+	async function mPFunction(page){
+		let num;
+        const res = await fetch(page,
+			{
+				method: "GET"
+			});
+			if(res.ok){
+				const data = await res.json();
+				mP = Math.floor(data.length/10);
+				if(mP === data.length/10){
+					mP = mP-1;
+				}
+        }
+	}
+
+	async function Errores(code){
+        let msg;
+        if(code == 400){
+            msg = "Datos incorrectos"
+        }
+		if(code == 404){
+			msg = "No existe dato."
+		}
+		if(code == 409){
+            msg = "El dato "+newDato.country+"/"+newDato.year+" ya existe"
+        }
+        window.alert(msg)
+            return;
     }
 
     async function gethouseworkInicial() {
@@ -31,7 +80,7 @@
 				getHousework();
 			}
 		);
-		repeaters = await res.json();
+		housework = await res.json();
 		console.log("Recevider: " + housework.length);
 	}
 
@@ -44,7 +93,12 @@
 				"Content-Type": "application/json",
 			},
 		}).then(function (res) {
-			getHousework();
+			if(res.ok){
+				getHousework();
+				window.alert("Entrada introducida con éxito");
+		}else{
+			Errores(res.status);
+		}
 		});
 		console.log("Done");
 	}
@@ -98,6 +152,41 @@ loading
 <Table bordered>
 	<thead>
 		<tr>
+			<th>Fecha inicial</th>
+			<th>Fecha final</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><input type="number" min="2000" bind:value="{from}"></td>
+			<td><input type="number" min="2000" bind:value="{to}"></td>
+			<td align="center"><Button outline color="dark" on:click="{()=>{
+				if (from == null || to == null) {
+					window.alert('Los campos fecha inicial y fecha final no pueden estar vacíos')
+				}else{
+					getHousework();
+				}
+			}}">
+				Buscar
+				</Button> 
+			</td>
+			<td align="center"><Button outline color="info" on:click="{()=>{
+				from = null;
+				to = null;
+				getHousework();
+				
+			}}">
+				Limpiar Búsqueda
+				</Button>
+			</td>
+		</tr>
+	</tbody>
+</Table>
+
+
+<Table bordered>
+	<thead>
+		<tr>
 			<th>
 				País
 			</th>
@@ -139,7 +228,23 @@ loading
 				{/each}
 	</tbody>
 </Table>
-<td><Button outline color="primary" on:click={gethouseworkInicial}>Cargar datos</Button></td>
-<td><Button outline color="primary" on:click={eliminarDatos}>Eliminar datos</Button></td>
+<div align="center">
+	{#each Array(mP+1) as _,p}
+	
+		<Button outline color="secondary" on:click={()=>{
+			offset = p;
+			getHousework();
+		}}>{p} </Button>
+	{/each}
+</div>
+<br>
+<div align="center">
+	<Button outline color="success" on:click={gethouseworkInicial}>
+		Cargar datos
+	</Button>
+	<Button outline color="danger" on:click={eliminarDatos}>
+		Borrar todo
+	</Button>
+</div>
 {/await}
 </main>
