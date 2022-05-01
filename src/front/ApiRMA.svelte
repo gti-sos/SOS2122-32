@@ -13,71 +13,75 @@
 		men: "",
 		average: "",
 	};
-	let errorMsg = "";
+    let errorMsg = "";
 	let okMsg = "";
-	let visible = false;
-	let visibleOk = false;
-	let offset1 = 0;
-	let offset2 = 0;
-	let limit = 10;
-	let page = 1;
-	let lastPage = 1;
-	let total = 0;
 	let from = null;
 	let to = null;
-	onMount(getrepeaters2);
+	let offset = 0;
+	let limit = 10;
+	let mP = 0;
+	let visible = false;
+	let visibleOk = false;
+	onMount(getrepeaters);
 
-	async function getrepeaters() {
-		console.log("Fetching entries....");
-		let cadena = `/api/v2/repeaters-stats?from=${from}&&to=${to}&&`;
-		const res = await fetch(cadena);
-		if (res.ok) {
-			const data = await res.json();
-			repeaters = data;
-			console.log("Received entries: " + repeaters.length);
-		} else {
-			console.log("Error");
+	async function getrepeaters(){
+        console.log("Fetching ending...");
+		let page = `/api/v2/repeaters-stats?limit=${limit}&&offset=${offset*10}&&`;
+		if (from != null) {
+			page = page + `from=${from}&&`
 		}
+		if (to != null) {
+			page = page + `to=${to}&&`
+		}
+        const res = await fetch(page);
+		if(res.ok){
+			let cPage = page.split(`limit=${limit}&&offset=${offset*10}`);
+			mPFunction(cPage[0]+cPage[1]);
+            const data = await res.json();
+            repeaters = data;
+        }else{
+			Errores(res.status);
+		}
+    }
+
+	async function mPFunction(page){
+		let num;
+        const res = await fetch(page,
+			{
+				method: "GET"
+			});
+			if(res.ok){
+				const data = await res.json();
+				mP = Math.floor(data.length/10);
+				if(mP === data.length/10){
+					mP = mP-1;
+				}
+        }
 	}
 
-	async function getrepeaters2() {
-		console.log("Fetching entries....");
-		let cadena =
-			"/api/v2/repeaters-stats?limit=" + limit + "&offset=" + offset1;
-		const res = await fetch(cadena);
-		if (res.ok) {
-			//let cadenaPag = cadena.split("?limit=" + limit + "&offset=" + offset1);
-			paginacion();
-			const data = await res.json();
-			repeaters = data;
-			console.log("Received entries: " + repeaters.length);
+	async function Errores(code){
+        let msg;
+        if(code == 400){
+            msg = "Datos incorrectos"
+        }
+		if(code == 404){
+			msg = "No existe dato."
 		}
-	}
+		if(code == 409){
+            msg = "El dato "+newDato.country+"/"+newDato.year+" ya existe"
+        }
+        window.alert(msg)
+            return;
+    }
 
-	async function paginacion() {
-		const data = await fetch(BASE_API_URL + "/repeaters-stats");
-		if (data.status == 200) {
-			const json = await data.json();
-			total = json.length;
-			cambiapag(page, offset1);
-		}
-	}
+	
 
-	function cambiapag(page1, offset2) {
-		lastPage = Math.ceil(total / 10);
-		console.log("Last page = " + lastPage);
-		if (page1 !== page) {
-			offset1 = offset2;
-			page = page1;
-			getrepeaters2();
-			getrepeaters();
-		}
-	}
+	
 	async function getrepeatersInicial() {
 		console.log("Fetching ending...");
 		const res = await fetch("/api/v2/repeaters-stats/loadInitialData").then(
 			function (res) {
-				getrepeaters2();
+				window.alert("Datos cargados");
 				getrepeaters();
 			}
 		);
@@ -94,7 +98,12 @@
 				"Content-Type": "application/json",
 			},
 		}).then(function (res) {
-			getrepeaters();
+			if(res.ok){
+				getrepeaters();
+				window.alert("Entrada introducida con éxito");
+		}else{
+			Errores(res.status);
+		}
 		});
 		console.log("Done");
 	}
@@ -108,6 +117,8 @@
 			},
 		}).then(function (res) {
 			getrepeaters();
+			window.alert("Datos eliminados");
+
 		});
 		console.log("Done");
 	}
@@ -121,23 +132,13 @@
 			},
 		}).then(function (res) {
 			getrepeaters();
+			window.alert("Eliminado");
+
 		});
 		console.log("Done");
 	}
 
-    async function editarDato(name) {
-		console.log("Inserting: " + JSON.stringify(newDato));
-		const res = await fetch("/api/v2/repeaters-stats/"+name, {
-			method: "PUT",
-            body: JSON.stringify(newDato),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		}).then(function (res) {
-			getrepeaters();
-		});
-		console.log("Done");
-	}
+    
 </script>
 
 <main>
@@ -208,14 +209,31 @@
 						<td>{rep.men}</td>
 						<td>{rep.average}</td>
 						<td><Button outline color= "primary" on:click={eliminarDato(rep.country,rep.year)}>Eliminar</Button>
-                            <Button outline color= "primary" on:click={editarDato(rep.country)}>Editar</Button>
+                            <Button outline color= "warning" on:click={function (){
+								window.location.href = `/#/repeaters-stats/${rep.country}/${rep.year}`
+							}}>
+								Editar
+							</Button>
                         </td>
 					</tr>
 				{/each}
 			</tbody>
 		</Table>
-		<td><Button outline color="primary" on:click={getrepeatersInicial}>Cargar datos</Button></td>
-		<td><Button outline color="primary" on:click={eliminarDatos}>Eliminar datos</Button></td>
+		<div align="center">
+			{#each Array(mP+1) as _,p}
+			
+				<Button outline color="secondary" on:click={()=>{
+					offset = p;
+					getrepeaters();
+				}}>{p} </Button>
+			{/each}
+		</div>
+		<br>
+		<div align="center">
+			<td><Button outline color="primary" on:click={getrepeatersInicial}>Cargar datos</Button></td>
+			<td><Button outline color="primary" on:click={eliminarDatos}>Eliminar datos</Button></td>
+		</div>
+		
 
 	{/await}
 </main>
