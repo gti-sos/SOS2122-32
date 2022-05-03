@@ -8,6 +8,8 @@
 	import EditApiRMA from "./editApiRMA.svelte";
 	import Info from "./Info.svelte";
 	import ApiSgb from "./apiSGB.svelte";
+	import Mygraph from "./Mygraph.svelte";
+	import MygraphJHG from "./MygraphJHG.svelte";
 
 
 
@@ -19,8 +21,9 @@
 		"/ending-stats/:country/:year": EditApiSGB, 
 		"/housework-stats/:country/:year": EditApiJHG,
 		"/repeaters-stats/:country/:year": EditApiRMA,
-		'/info': Info
-
+		'/info': Info,
+		"/graph": Mygraph,
+		"/graphJHG": MygraphJHG
 	};
 
 </script>

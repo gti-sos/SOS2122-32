@@ -238,6 +238,9 @@ loading
 	<Button outline color="danger" on:click={eliminarDatos}>
 		Borrar todo
 	</Button>
+	<a href="/#/graphJHG">
+		<button outline color="secondary">Gráfica</button>
+	</a>
 </div>
 {/await}
 </main>

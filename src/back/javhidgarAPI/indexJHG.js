@@ -75,6 +75,10 @@ app.get(BASE_API_URL+"/housework-stats", (req,res)=>{
     }
 });
 
+app.get(BASE_API_URL+ "/housework-stats/data",(req,res)=>{
+    res.send(JSON.stringify(houseworkStats));
+})
+
 app.get(BASE_API_URL+"/housework-stats/:country/:year", (req,res)=>{
     houseworkStats2 = houseworkStats.filter(i=>{
         return(i.country==req.params.country && i.year==req.params.year);
