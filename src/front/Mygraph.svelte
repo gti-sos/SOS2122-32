@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import Button from 'sveltestrap/src/Button.svelte';
     import Highcharts from "highcharts";
+    const delay = ms => new Promise(res => setTimeout(res,ms));
 
     //repeaters-stats
     let repeatersStats = [];
@@ -153,6 +154,7 @@
     <script src="https://code.highcharts.com/modules/series-label.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>  
     <script
         src="https://code.highcharts.com/modules/accessibility.js"
         on:load={loadGraph}></script>
