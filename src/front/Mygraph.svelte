@@ -8,6 +8,33 @@
     let r_women = [];
     let r_men = [];
     let r_average = [];
+        //ending-stats
+    let endingStats = [];
+    let e_country = [];
+    let e_women = [];
+    let e_men = [];
+    let e_average = [];
+    //
+
+    async function getEndingStats() {
+        console.log("Fetching stats....");
+        const res = await fetch("/api/v1/ending-stats");
+        if (res.ok) {
+            const data = await res.json();
+            endingStats = data;
+            console.log("Estadísticas recibidas: " + endingStats.length);
+            //inicializamos los arrays para mostrar los datos
+            endingStats.forEach((stat) => {
+                e_country.push(stat.country + "-" + stat.year);
+                e_women.push(stat["women"]);
+                e_men.push(stat["men"]);
+                e_average.push(stat["average"]);
+            });
+            await delay(500);
+        } else {
+            console.log("Error cargando los datos");
+        }
+    }
 
     let apiData = [];
     async function getData() {
@@ -90,6 +117,10 @@
                     name: "Repeaters",
                     data: r_average,
                 },
+                {
+                    name: "Ending",
+                    data: e_average,
+                },
             ],
 
             responsive: {
@@ -112,6 +143,7 @@
     }
     onMount(getData);
     onMount(getRepeatersStats);
+    onMount(getEndingStats);
 
 </script>
 

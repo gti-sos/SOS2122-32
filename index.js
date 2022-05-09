@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const port = process.env.PORT || 8081;
+const port = process.env.PORT || 8082;
 
 app.use(bodyParser.json());
 
@@ -26,7 +26,8 @@ backendJHG(app,db_housework);
 
 //######################   API Sergio García Blanco  ###############################//
 const backendSGB = require("./src/back/sergarblaAPI/indexSGB.js")
-backendSGB(app);
+db_ending = new Datastore();
+backendSGB(app,db_ending);
 
 //######################   API ****  ###############################//
 

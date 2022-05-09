@@ -224,6 +224,9 @@ loading
 		<Button outline color="danger" on:click={BorrarPollutions}>
 			Borrar todo
 		</Button>
+		<a href="/#/graphSGB">
+			<button outline color="secondary">Gráfica</button>
+		</a>
 	</div>
 {/await}
 

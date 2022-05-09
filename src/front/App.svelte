@@ -1,6 +1,6 @@
 <script>
 	import Router from "svelte-spa-router";
-	import ApiJHG from "./ApiJHG.svelte";
+	import ApiJHG from "./apiJHG.svelte";
 	import Home from "./Home.svelte";
 	import ApiRMA from "./ApiRMA.svelte";
 	import EditApiSGB from "./editApiSGB.svelte";
@@ -11,6 +11,7 @@
 	import Mygraph from "./Mygraph.svelte";
 	import MygraphJHG from "./MygraphJHG.svelte";
 	import MygraphRma from "./MygraphRMA.svelte";
+	import MygraphSGB from "./MygraphSGB.svelte";
 
 
 
@@ -25,7 +26,8 @@
 		'/info': Info,
 		"/graph": Mygraph,
 		"/graphJHG": MygraphJHG,
-		"/graphRMA": MygraphRma
+		"/graphRMA": MygraphRma,
+		"/graphSGB": MygraphSGB
 
 	};
 
