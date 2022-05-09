@@ -1,4 +1,5 @@
 <script>
+  import Highcharts from "highcharts"
     import { onMount } from "svelte";
         const BASE_API_PATH = "/api/v1/ending-stats";
         let Stats=[];
