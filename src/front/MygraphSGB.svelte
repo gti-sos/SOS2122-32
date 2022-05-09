@@ -1,5 +1,5 @@
 <script>
-  import Highcharts from "highcharts"
+  //import Highcharts from "highcharts"
     import { onMount } from "svelte";
         const BASE_API_PATH = "/api/v1/ending-stats";
         let Stats=[];
@@ -31,7 +31,7 @@
               type: 'column'
           },
           title: {
-              text: 'Porcentajes de plastico, gas y residuos'
+              text: 'Porcentajes de hombres mujeres y media'
           },
           xAxis: {
               categories: Stats_date,
