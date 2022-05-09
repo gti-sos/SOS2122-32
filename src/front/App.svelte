@@ -4,8 +4,8 @@
 	import Home from "./Home.svelte";
 	import ApiRMA from "./ApiRMA.svelte";
 	import EditApiSGB from "./editApiSGB.svelte";
-	import EditApiJHG from "./editApiJHG.svelte";
-	import EditApiRMA from "./editApiRMA.svelte";
+	import EditApiJHG from "./EditApiJHG.svelte";
+	import EditApiRMA from "./EditApiRMA.svelte";
 	import Info from "./Info.svelte";
 	import ApiSgb from "./apiSGB.svelte";
 	import Mygraph from "./Mygraph.svelte";
