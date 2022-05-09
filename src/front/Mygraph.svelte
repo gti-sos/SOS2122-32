@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import Button from 'sveltestrap/src/Button.svelte';
+    import Highcharts from "highcharts";
 
     //repeaters-stats
     let repeatersStats = [];
