@@ -22,7 +22,7 @@
                 });
                 cargados=true;
             }
-            
+             
         console.log("Waste data: " + EndingData);
                 
         Highcharts.chart('container', {
