@@ -1,7 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import Button from 'sveltestrap/src/Button.svelte';
-    import Highcharts from "highcharts";
+    //import Highcharts from "highcharts";
     const delay = ms => new Promise(res => setTimeout(res,ms));
 
     //repeaters-stats

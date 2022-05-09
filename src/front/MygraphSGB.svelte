@@ -11,8 +11,8 @@
         let cargados = false;
         async function loadGraph() {
             console.log("Fetching data...");
-            const res = await fetch(BASE_API_PATH + "/ending-stats");
-            EndingData = await res.json();
+            const res = await fetch(BASE_API_PATH);
+            var EndingData = await res.json();
             if (res.ok) {
                 Stats.forEach(stat => {
                     Stats_date.push(stat.country+"-"+stat.year);
