@@ -1,6 +1,6 @@
 <script>
 	import Router from "svelte-spa-router";
-	import ApiJHG from "./ApiJHG.svelte";
+	import apiJHG from "./apiJHG.svelte";
 	import Home from "./Home.svelte";
 	import ApiRMA from "./ApiRMA.svelte";
 	import EditApiSGB from "./editApiSGB.svelte";
@@ -16,7 +16,7 @@
 
 	const routes={
 		'/' : Home,
-		'/apiJHG': ApiJHG,
+		'/apiJHG': apiJHG,
 		'/ApiRMA': ApiRMA,
 		'/apiSGB': ApiSgb,
 		"/ending-stats/:country/:year": EditApiSGB, 
