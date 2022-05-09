@@ -1,7 +1,5 @@
 <script>
-	import ApiJHG from "./ApiJHG.svelte";
-	import ApiRMA from "./ApiRMA.svelte";
-	import ApiSGB from "./apiSGB.svelte"
+	
 
 
 </script>
@@ -48,7 +46,7 @@
 		><button color="blue">API v1</button></a
 	>
 	<a href="/#/ApiSGB"><button>Interfaz</button></a>
-	<a href="/api/v2/ending-stats"><button>Backend</button></a>
+	<a href="/api/v1/ending-stats"><button>Backend</button></a>
 	
 	<h2>Gráfica</h2>
 	<a href="/#/Graph"><button>Gráfica</button></a>
