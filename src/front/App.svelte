@@ -10,6 +10,7 @@
 	import ApiSgb from "./apiSGB.svelte";
 	import Mygraph from "./Mygraph.svelte";
 	import MygraphJHG from "./MygraphJHG.svelte";
+	import MygraphRma from "./MygraphRMA.svelte";
 
 
 
@@ -23,7 +24,9 @@
 		"/repeaters-stats/:country/:year": EditApiRMA,
 		'/info': Info,
 		"/graph": Mygraph,
-		"/graphJHG": MygraphJHG
+		"/graphJHG": MygraphJHG,
+		"/graphRMA": MygraphRma
+
 	};
 
 </script>

@@ -232,6 +232,7 @@
 		<div align="center">
 			<td><Button outline color="primary" on:click={getrepeatersInicial}>Cargar datos</Button></td>
 			<td><Button outline color="primary" on:click={eliminarDatos}>Eliminar datos</Button></td>
+			<td><Button outline color="primary" on:click={function (){window.location.href = `/#/graphRMA`}}>Gráfica</Button></td>
 		</div>
 		
 
