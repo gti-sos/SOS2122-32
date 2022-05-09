@@ -1,120 +1,89 @@
 <script>
-  //import Highcharts from "highcharts"
-    import { onMount } from "svelte";
-        const BASE_API_PATH = "/api/v1/ending-stats";
-        let Stats=[];
-        let Stats_date = [];
-        let stats_women = [];
-        let stats_men = [];
-        let stats_average = [];
-     
-            let errorMsg="Tiene que cargar los datos para visualizar las analíticas.";
-        let cargados = false;
-        async function loadGraph() {
-            console.log("Fetching data...");
-            const res = await fetch(BASE_API_PATH);
-            var EndingData = await res.json();
-            if (res.ok) {
-                Stats.forEach(stat => {
-                    Stats_date.push(stat.country+"-"+stat.year);
-                    stats_women.push(stat.women);
-                    stats_men.push(stat.men);
-                    stats_average.push(stat.average);
-                });
-                cargados=true;
-            }
-             
-        console.log("Waste data: " + EndingData);
-                
-        Highcharts.chart('container', {
-          chart: {
-              type: 'column'
-          },
-          title: {
-              text: 'Porcentajes de hombres mujeres y media'
-          },
-          xAxis: {
-              categories: Stats_date,
-              crosshair: true
-          },
-          yAxis: {
-              min: 0,
-              title: {
-                  text: 'Rainfall (mm)'
-              }
-          },
-          tooltip: {
-              headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-              pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                  '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-              footerFormat: '</table>',
-              shared: true,
-              useHTML: true
-          },
-          plotOptions: {
-              column: {
-                  pointPadding: 0.2,
-                  borderWidth: 0
-              }
-          },
-          series: [{
-              name: 'Mujer',
-              data: stats_women
-          }, {
-              name: 'Hombre',
-              data: stats_men
-          }, {
-              name: 'Average',
-              data: stats_average
-          }]
-      });
+  import {onMount} from 'svelte';
+  import Button from 'sveltestrap/src/Button.svelte';
+
+  const delay = ms => new Promise(res => setTimeout(res,ms));
+  let stats = [];
+  let stats_country_date = [];
+  let stats_women = [];
+  let stats_men = [];
+  let stats_average = []; 
+  async function getDebtStats(){
+    console.log("Fetching stats....");
+    const res = await fetch("/api/v1/ending-stats");
+    if(res.ok){
+        const data = await res.json();
+        stats = data;
+        console.log("Estadísticas recibidas: "+stats.length);
+        //inicializamos los arrays para mostrar los datos
+        stats.forEach(stat => {
+          stats_country_date.push(stat.country+"-"+stat.year);
+          stats_women.push(stat["women"]);
+          stats_men.push(stat["men"]);
+          stats_average.push(stat["average"]);            
+        });
+        await delay(500);
+        loadGraph();
+    }else{
+        console.log("Error cargando los datos");
+    }
+  }
+  async function loadGraph(){
+    var options = {
+      
+      series: [{
+        name: 'Mujeres',
+        data: stats_women
+      }, {
+        name: 'Hombres',
+        data: stats_men
+      }, {
+        name: 'Media',
+        data: stats_average
+      }],
+      chart: {
+      height: 450,
+      type: 'bar'
+      },
+      dataLabels: {
+        enabled: false
+      },
+      
+      xaxis: {
+        type: 'País-Año',
+        categories: stats_country_date
+      },
+      yAxis: {
+        title: {
+            text: 'Valor'
         }
-        onMount(loadGraph);
-      </script>
+      },
       
-      <svelte:head>
-      <script src="https://code.highcharts.com/highcharts.js"></script>
-      <script src="https://code.highcharts.com/modules/series-label.js"></script>
-      <script src="https://code.highcharts.com/modules/exporting.js"></script>
-      <script src="https://code.highcharts.com/modules/export-data.js"></script>
-      <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
-      </svelte:head>
-      
-      <main>
-        <div>
-            <h2>
-              Análiticas
-            </h2>
-          </div>
-      
-        <div>
-            <figure class="highcharts-figure">
-              <div id="container" />
-              <p class="highcharts-description">
-                Porcentajes hombres y mujeres que finalizan
-              </p>
-            </figure>
-        </div>
-        
-      
-        <div>
-          {#if !cargados}
-            <p class="error">{errorMsg}</p>
-          {/if}
-        </div>
-      </main>
-      
-      <style>
-        main {
-            text-align: center;
-            padding: 30px;       
-        }
-        p.error{
-          color: red; 
-          text-align:center;
-          font-size: 20px;
-          margin-top:80px;
-        }
-        
-       
-      </style>
+    };
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+  }
+  onMount(getDebtStats);
+  
+</script>
+
+<svelte:head>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</svelte:head>
+
+<main>
+  <h2>Datos de finalizar primaria por Género</h2>
+  <h4>Biblioteca: ApexChart.js</h4>
+  <div id='chart'></div>
+  <Button color="outline-dark" on:click={function (){window.location.href = `/#/ApiSGB/`}}>Volver</Button>
+</main>
+
+<style>
+#chart {
+width: 90%;
+margin: 35px auto;
+border: 1px solid black;
+}
+</style>
