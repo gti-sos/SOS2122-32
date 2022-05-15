@@ -1,7 +1,6 @@
 <script>
   import {onMount} from 'svelte';
   import Button from 'sveltestrap/src/Button.svelte';
-
   const delay = ms => new Promise(res => setTimeout(res,ms));
   let stats = [];
   let stats_country_date = [];
@@ -28,49 +27,70 @@
         console.log("Error cargando los datos");
     }
   }
-  async function loadGraph(){
-    var options = {
-      
-      series: [{
-        name: 'Mujeres',
-        data: stats_women
-      }, {
-        name: 'Hombres',
-        data: stats_men
-      }, {
-        name: 'Media',
-        data: stats_average
-      }],
-      chart: {
-      height: 450,
-      type: 'bar'
-      },
-      dataLabels: {
-        enabled: false
-      },
-      
-      xaxis: {
-        type: 'País-Año',
-        categories: stats_country_date
-      },
-      yAxis: {
-        title: {
-            text: 'Valor'
-        }
-      },
-      
-    };
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
-    chart.render();
-  }
+  async function loadGraph() {
+        Highcharts.chart("container", {
+            chart: {
+                type: "column",
+            },
+            title: {
+                text: "escolarizacion",
+            },
+            subtitle: {
+                text: "Source: https://ourworldindata.org/esco",
+            },
+            xAxis: {
+                categories: country,
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: "escolarizacion",
+                },
+            },
+            tooltip: {
+                headerFormat:
+                    '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat:
+                    '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y} muertes</b></td></tr>',
+                footerFormat: "</table>",
+                shared: true,
+                useHTML: true,
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0,
+                },
+            },
+            series: [
+                {
+                name: 'Escolarizacion Total',
+                data: tot_esco
+                },
+                {
+                name: 'Escolarización Hombres',
+                data: tot_man
+                },
+                {
+                name: 'Escolarización Mujeres',
+                data: tot_wom
+                
+                }
+                
+            ]
+        });
+    }
   onMount(getDebtStats);
   
 </script>
 
 <svelte:head>
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="https://code.highcharts.com/highcharts.js" on:load="{loadGraph}"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js" on:load="{loadGraph}"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js" on:load="{loadGraph}"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js" on:load="{loadGraph}"></script>
 </svelte:head>
 
 <main>
