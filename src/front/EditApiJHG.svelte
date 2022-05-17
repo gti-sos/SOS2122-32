@@ -95,9 +95,9 @@
                 <tr>
                     <td>{updatedCountry}</td>
                     <td>{updatedYear}</td>
-                    <td><input type="number" min="0" bind:value="{updatedWomen}">></td>
+                    <td><input type="number" min="0" bind:value="{updatedWomen}"></td>
                     <td><input type="number" min="2000" bind:value="{updatedMen}"></td>
-                    <td><input type="number" min="2000" bind:value="{updatedAvarage}"></td>
+                    <td><input type="number" min="2000" bind:value="{updatedAverage}"></td>
                     <td><Button outline color="primary" on:click="{EditEnding}">
                         Editar
                         </Button>
