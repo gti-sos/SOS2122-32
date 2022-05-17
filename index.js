@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const port = process.env.PORT || 8082;
+const request = require('request');
 
 app.use(bodyParser.json());
 
@@ -31,6 +32,14 @@ backendSGB(app,db_ending);
 
 //######################   API ****  ###############################//
 
+var paths='/remoteAPI';
+var apiServerHost = 'http://sos2122-32.herokuapp.com';
+  
+app.use(paths, function(req, res) {
+  var url = apiServerHost + req.url;
+  console.log('piped: ' + req.url);
+  req.pipe(request(url)).pipe(res);
+});
 
 
 app.use("/", express.static('public'));
