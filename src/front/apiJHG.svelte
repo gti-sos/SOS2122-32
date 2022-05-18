@@ -244,6 +244,12 @@ loading
 	<Button outline color="secondary" on:click={function (){
 		window.location.href = `/#/graphJHGv2`;
 	}}>Gráfica Highcharts</Button>
+	<Button outline color="secondary" on:click={function (){
+		window.location.href = `/#/graphCo2Stats`;
+	}}>Gráfica SOS-22</Button>
+	<Button outline color="secondary" on:click={function (){
+		window.location.href = `/#/graphRegistrationStats`;
+	}}>Gráfica SOS-31</Button>
 </div>
 {/await}
 </main>

@@ -148,7 +148,7 @@ app.delete(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
 app.get(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
     var houseworkStats1 = [
         {
-            country:"Albanian",
+            country:"albanian",
             year : 2011,
             women : 21.7,
             men : 3.47,
@@ -157,7 +157,7 @@ app.get(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
         },
     
         {
-            country:"Chile",
+            country:"chile",
             year : 2015,
             women : 20.1,
             men : 9.85,
@@ -166,7 +166,7 @@ app.get(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
         },
     
         {
-            country:"Belgium",
+            country:"belgium",
             year : 2013,
             women : 16.04,
             men : 10.06,
@@ -175,7 +175,7 @@ app.get(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
         },
     
         {
-            country:"Ireland",
+            country:"ireland",
             year : 2005,
             women : 20.55,
             men : 8.95,
@@ -184,7 +184,7 @@ app.get(BASE_API_URL+"/housework-stats/:name", (req,res)=>{
         },
     
         {
-            country:"Argentina",
+            country:"argentina",
             year : 2013,
             women : 21.7,
             men : 3.47,

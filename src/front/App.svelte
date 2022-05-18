@@ -14,6 +14,8 @@
 	import MygraphSGB from "./MygraphSGB.svelte";
 	import MygraphJHGv2 from "./MygraphJHGv2.svelte";
 	import Integracion1RMA from "./rafmolalv/PublicExpenditureGraph.svelte";
+	import GraphCo2Stats from "./GraphCo2Stats.svelte";
+	import GraphAirPollutionStats from "./GraphAirPollutionStats.svelte";
 
 
 
@@ -32,7 +34,9 @@
 		"/graphRMA": MygraphRma,
 		"/graphSGB": MygraphSGB,
 		"/graphJHGv2": MygraphJHGv2,
-		"/Integracion1RMA": Integracion1RMA
+		"/Integracion1RMA": Integracion1RMA,
+		"/graphCo2Stats": GraphCo2Stats,
+		"/graphRegistrationStats": GraphAirPollutionStats
 
 	};
 

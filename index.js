@@ -36,7 +36,7 @@ backendSGB(app,db_ending);
 //######################   API ****  ###############################//
 
 var paths='/remoteAPI';
-var apiServerHost = 'http://sos2122-32.herokuapp.com';
+var apiServerHost = 'https://sos2122-31.herokuapp.com/api/v2/registration-stats';
   
 app.use(paths, function(req, res) {
   var url = apiServerHost + req.url;

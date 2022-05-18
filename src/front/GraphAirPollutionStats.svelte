@@ -2,12 +2,32 @@
     import { onMount } from 'svelte';
     
     let apiData = [];
+    let apiData1 = [];
+    let cy1 = [];
+    let cy2 = [];
+    let cy3 = [];
     let cya = [];
     let cym = [];
     let cyw = [];
     async function getData(){
+        const res1 = await fetch ("/remoteAPI")
         const res = await fetch("/api/v1/housework-stats/data");
         if (res.ok){
+            const json1 = await res1.json();
+            apiData1 = json1;
+            let apiDataZ = apiData1.map(i=>{
+                return [i.country,i.year,i.tertiarylevel,i.secondarylevel,i.primarylevel];
+            });
+            apiDataZ.forEach(i=>{
+            cy3.push([i[0]+" "+i[1],i[2]]);
+            });
+            apiDataZ.forEach(i=>{
+            cy2.push([i[0]+" "+i[1],i[3]]);
+            });
+            apiDataZ.forEach(i=>{
+            cy1.push([i[0]+" "+i[1],i[4]]);
+            });
+            console.log(apiData1);
             const json = await res.json();
             apiData = json;
             let apiDataY = apiData.map(i=>{
@@ -97,6 +117,51 @@
     }, {
         name: 'Mujeres',
         data: cyw,
+        dataLabels: {
+            enabled: true,
+            rotation: -90,
+            color: '#FFFFFF',
+            align: 'right',
+            format: '{point.y:.1f}', // one decimal
+            y: 10, // 10 pixels down from the top
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    }, {
+        name: 'Nivel primario',
+        data: cy1,
+        dataLabels: {
+            enabled: true,
+            rotation: -90,
+            color: '#FFFFFF',
+            align: 'right',
+            format: '{point.y:.1f}', // one decimal
+            y: 10, // 10 pixels down from the top
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    }, {
+        name: 'Nivel secundario',
+        data: cy2,
+        dataLabels: {
+            enabled: true,
+            rotation: -90,
+            color: '#FFFFFF',
+            align: 'right',
+            format: '{point.y:.1f}', // one decimal
+            y: 10, // 10 pixels down from the top
+            style: {
+                fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+            }
+        }
+    }, {
+        name: 'Nivel terciario',
+        data: cy3,
         dataLabels: {
             enabled: true,
             rotation: -90,
