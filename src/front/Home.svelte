@@ -1,6 +1,6 @@
 <script>
 	import ApiJHG from "./apiJHG.svelte";
-	import ApiRMA from "./ApiRMA.svelte";
+	import ApiRMA from "./rafmolalv/ApiRMA.svelte";
 	import ApiSGB from "./apiSGB.svelte"
 
 
@@ -43,6 +43,8 @@
 	>
 	<a href="/#/ApiRMA"><button>Interfaz</button></a>
 	<a href="/api/v2/repeaters-stats"><button>Backend</button></a>
+	<a href="/#/Integracion1RMA"><button>Integracion 1</button></a>
+
 	<p>Sergio Jesús García Blanco</p>
 	<a href="http://sos2122-32.herokuapp.com/api/v1/ending-stats/docs"
 		><button color="blue">API v1</button></a

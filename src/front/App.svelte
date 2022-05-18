@@ -2,17 +2,19 @@
 	import Router from "svelte-spa-router";
 	import apiJHG from "./apiJHG.svelte";
 	import Home from "./Home.svelte";
-	import ApiRMA from "./ApiRMA.svelte";
+	import ApiRMA from "./rafmolalv/ApiRMA.svelte";
 	import EditApiSGB from "./editApiSGB.svelte";
 	import EditApiJHG from "./EditApiJHG.svelte";
-	import EditApiRMA from "./EditApiRMA.svelte";
+	import EditApiRMA from "./rafmolalv/EditApiRMA.svelte";
 	import Info from "./Info.svelte";
 	import ApiSgb from "./apiSGB.svelte";
 	import Mygraph from "./Mygraph.svelte";
 	import MygraphJHG from "./MygraphJHG.svelte";
-	import MygraphRma from "./MygraphRMA.svelte";
+	import MygraphRma from "./rafmolalv/MygraphRMA.svelte";
 	import MygraphSGB from "./MygraphSGB.svelte";
 	import MygraphJHGv2 from "./MygraphJHGv2.svelte";
+	import Integracion1RMA from "./rafmolalv/PublicExpenditureGraph.svelte";
+
 
 
 
@@ -29,7 +31,8 @@
 		"/graphJHG": MygraphJHG,
 		"/graphRMA": MygraphRma,
 		"/graphSGB": MygraphSGB,
-		"/graphJHGv2": MygraphJHGv2
+		"/graphJHGv2": MygraphJHGv2,
+		"/Integracion1RMA": Integracion1RMA
 
 	};
 

@@ -48,6 +48,17 @@ app.use(paths, function(req, res) {
 app.use("/", express.static('public'));
 
 
+//###################### PROXYS Rafael Molino Alvarez ###############################//
+
+var paths2 = '/remoteExp';
+var apiServerHost2 = 'https://sos2122-27.herokuapp.com/api/v2/public-expenditure-stats';
+
+app.use(paths2, function (req, res) {
+  var url = apiServerHost2 + req.url;
+  console.log('piped: ' + req.url);
+  req.pipe(request(url)).pipe(res);
+});
+
 app.listen(port, ()=> {
     console.log(`Server ready at port ${port}`);
 });
