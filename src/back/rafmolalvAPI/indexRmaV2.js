@@ -1,6 +1,22 @@
 const bodyParser = require("body-parser");
 const BASE_API_URL = "/api/v2";
 const RMA_BASE_API_URL = "/api/v2/repeaters-stats";
+const request = require('request');
+const cors = require('cors'); 
+const express = require("express");
+const app = express();
+
+app.use(cors());
+//Proxy
+
+var paths='/remoteAPI';
+var apiServerHost = 'http://sos2122-32.herokuapp.com/api/v2/repeaters-stats';
+
+app.use(paths, function(req, res) {
+  var url = apiServerHost + req.url;
+  console.log('piped: ' + req.url);
+  req.pipe(request(url)).pipe(res);
+});
 
 
 var repeatersStats = [];
