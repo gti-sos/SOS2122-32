@@ -32,7 +32,7 @@
             kg = apiData1.map(i=>{
                 return (i.co2_kg);
             });
-            console.log(tot);
+            console.log(apiData1);
             const json = await res.json();
             apiData = json;
             let apiDataY = apiData.map(i=>{
