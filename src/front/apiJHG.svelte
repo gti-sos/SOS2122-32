@@ -238,9 +238,12 @@ loading
 	<Button outline color="danger" on:click={eliminarDatos}>
 		Borrar todo
 	</Button>
-	<a href="/#/graphJHG">
-		<button outline color="secondary">Gráfica</button>
-	</a>
+	<Button outline color="secondary" on:click={function (){
+		window.location.href = `/#/graphJHG`;
+	}}>Gráfica Plotly</Button>
+	<Button outline color="secondary" on:click={function (){
+		window.location.href = `/#/graphJHGv2`;
+	}}>Gráfica Highcharts</Button>
 </div>
 {/await}
 </main>

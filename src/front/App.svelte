@@ -12,6 +12,7 @@
 	import MygraphJHG from "./MygraphJHG.svelte";
 	import MygraphRma from "./MygraphRMA.svelte";
 	import MygraphSGB from "./MygraphSGB.svelte";
+	import MygraphJHGv2 from "./MygraphJHGv2.svelte";
 
 
 
@@ -27,7 +28,8 @@
 		"/graph": Mygraph,
 		"/graphJHG": MygraphJHG,
 		"/graphRMA": MygraphRma,
-		"/graphSGB": MygraphSGB
+		"/graphSGB": MygraphSGB,
+		"/graphJHGv2": MygraphJHGv2
 
 	};
 
