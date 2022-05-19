@@ -16,7 +16,11 @@
 	import Integracion1RMA from "./rafmolalv/PublicExpenditureGraph.svelte";
 	import GraphCo2Stats from "./GraphCo2Stats.svelte";
 	import GraphAirPollutionStats from "./GraphAirPollutionStats.svelte";
-
+	import GraphExternalAPI1 from "./GraphExternalAPI1.svelte";
+	import GraphExternalAPI2 from "./GraphExternalAPI2.svelte";
+	import Integraciones from "./Integraciones.svelte";
+	import Analytics from "./Analytics.svelte";
+	import About from "./About.svelte";
 
 
 
@@ -36,7 +40,12 @@
 		"/graphJHGv2": MygraphJHGv2,
 		"/Integracion1RMA": Integracion1RMA,
 		"/graphCo2Stats": GraphCo2Stats,
-		"/graphRegistrationStats": GraphAirPollutionStats
+		"/graphRegistrationStats": GraphAirPollutionStats,
+		"/graphExternalAPI": GraphExternalAPI1,
+		"/graphExternalAPI2": GraphExternalAPI2,
+		"/integrations": Integraciones,
+		"/analytics": Analytics,
+		"/about": About
 
 	};
 

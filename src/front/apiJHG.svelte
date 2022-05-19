@@ -250,6 +250,12 @@ loading
 	<Button outline color="secondary" on:click={function (){
 		window.location.href = `/#/graphRegistrationStats`;
 	}}>Gráfica SOS-31</Button>
+	<Button outline color="secondary" on:click={function (){
+		window.location.href = `/#/graphExternalAPI`;
+	}}>Gráfica ExternalAPI1</Button>
+	<Button outline color="secondary" on:click={function (){
+		window.location.href = `/#/graphExternalAPI2`;
+	}}>Gráfica ExternalAPI2</Button>
 </div>
 {/await}
 </main>

@@ -2,8 +2,6 @@
 	import ApiJHG from "./apiJHG.svelte";
 	import ApiRMA from "./rafmolalv/ApiRMA.svelte";
 	import ApiSGB from "./apiSGB.svelte"
-
-
 </script>
 
 <main>
@@ -53,8 +51,11 @@
 	<a href="/api/v1/ending-stats"><button>Backend</button></a>
 	
 	<h2>Gráfica</h2>
-	<a href="/#/Graph"><button>Gráfica</button></a>
-	
+	<a href="/#/Graph"><button>Gráfica general</button></a>
+	<a href="/#/integrations"><button>Integraciones</button></a>
+	<a href="/#/analytics"><button>#Analytics</button></a>
+	<h2>Videos</h2>
+	<a href="/#/about"><button>Videos</button></a>
 
 </main>
 
