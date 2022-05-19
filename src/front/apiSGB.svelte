@@ -161,6 +161,7 @@ loading
 					Limpiar Búsqueda
 					</Button>
 				</td>
+				
 			</tr>
 		</tbody>
 	</Table>
@@ -227,7 +228,13 @@ loading
 		<a href="/#/graphSGB">
 			<button outline color="secondary">Gráfica</button>
 		</a>
+		
 	</div>
+	<br>
+	<div align="center">
+		<Button color="outline-dark" on:click={function (){window.location.href = `/`}}>Volver</Button>
+	</div>
+	
 {/await}
 
 </main>

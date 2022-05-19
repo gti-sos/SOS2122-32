@@ -139,46 +139,71 @@ app.get(BASE_API_URL+"/ending-stats/:name", (req,res)=>{
         {
             country:"Albanian",
             year : 2011,
-            women : 21.7,
-            men : 3.47,
-            average : 12.58
+            women : 94.4,
+            men : 91.7,
+            average : 93.050
     
+        },
+        {
+            country:"Argentina",
+            year : 2013,
+            women : 101.200,
+            men : 102.1,
+            average : 101.650
         },
     
         {
             country:"Chile",
             year : 2015,
-            women : 20.1,
-            men : 9.85,
-            average : 14.98
+            women :96.800,
+            men : 97.1,
+            average : 96.950
     
         },
     
         {
             country:"Belgium",
             year : 2013,
-            women : 16.04,
-            men : 10.06,
-            average : 13.05
+            women : 98.3,
+            men : 98.5,
+            average : 98.4
     
         },
     
         {
             country:"Ireland",
-            year : 2005,
-            women : 20.55,
-            men : 8.95,
-            average : 14.75
+            year : 2016,
+            women : 100.400,
+            men : 99,
+            average : 99.700
     
         },
-    
         {
-            country:"Argentina",
-            year : 2013,
-            women : 21.7,
-            men : 3.47,
-            average : 12.58
+            country:"China",
+            year : 2018,
+            women : 90.7,
+            men : 89.4,
+            average : 90.05
+    
+        },
+        {
+            country:"Greece",
+            year : 2011,
+            women : 91.900,
+            men : 94.4,
+            average : 93.150
+    
+        },
+        {
+            country:"Spain",
+            year : 2011,
+            women : 96.2,
+            men : 96.1,
+            average : 96.2
+    
         }
+    
+        
     ];
 
     endingName = endingStats.filter((h)=>{
