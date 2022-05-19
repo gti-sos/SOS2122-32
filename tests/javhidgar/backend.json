@@ -137,7 +137,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/Albanian",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/albanian",
 					"host": [
 						"{{HOST}}"
 					],
@@ -171,7 +171,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/Albanian/2011",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/albanian/2011",
 					"host": [
 						"{{HOST}}"
 					],
@@ -218,7 +218,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/Grecia",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/grecia",
 					"host": [
 						"{{HOST}}"
 					],
@@ -295,7 +295,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats?country=Albanian&year=2011",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats?country=albanian&year=2011",
 					"host": [
 						"{{HOST}}"
 					],
@@ -391,7 +391,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/Albanian",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/albanian",
 					"host": [
 						"{{HOST}}"
 					],
@@ -518,7 +518,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/Albanian/2011",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/albanian/2011",
 					"host": [
 						"{{HOST}}"
 					],
@@ -562,7 +562,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/Albanian",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/albanian",
 					"host": [
 						"{{HOST}}"
 					],
@@ -638,7 +638,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/Albanian/2011",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/albanian/2011",
 					"host": [
 						"{{HOST}}"
 					],
@@ -682,7 +682,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/Chile",
+					"raw": "{{HOST}}:{{PORT}}/api/v1/housework-stats/chile",
 					"host": [
 						"{{HOST}}"
 					],
