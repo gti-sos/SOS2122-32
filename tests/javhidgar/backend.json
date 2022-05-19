@@ -84,7 +84,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"Albanian\",\r\n\"year\": 2012,\r\n\"women\": 21.7,\r\n\"men\": 3.47,\r\n\"average\": 12.58\r\n}",
+					"raw": "{\r\n\"country\": \"albanian\",\r\n\"year\": 2012,\r\n\"women\": 21.7,\r\n\"men\": 3.47,\r\n\"average\": 12.58\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -146,7 +146,7 @@
 						"api",
 						"v1",
 						"housework-stats",
-						"Albanian"
+						"albanian"
 					]
 				}
 			},
@@ -180,7 +180,7 @@
 						"api",
 						"v1",
 						"housework-stats",
-						"Albanian",
+						"albanian",
 						"2011"
 					]
 				}
@@ -227,7 +227,7 @@
 						"api",
 						"v1",
 						"housework-stats",
-						"Grecia"
+						"grecia"
 					]
 				}
 			},
@@ -308,7 +308,7 @@
 					"query": [
 						{
 							"key": "country",
-							"value": "Albanian"
+							"value": "albanian"
 						},
 						{
 							"key": "year",
@@ -400,7 +400,7 @@
 						"api",
 						"v1",
 						"housework-stats",
-						"Albanian"
+						"albanian"
 					]
 				}
 			},
@@ -510,7 +510,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"country\": \"Albanian\",\r\n    \"year\": 2011,\r\n    \"men\": 3.4,\r\n    \"women\":2,\r\n    \"average\":3.1\r\n}",
+					"raw": "{\r\n    \"country\": \"albanian\",\r\n    \"year\": 2011,\r\n    \"men\": 3.4,\r\n    \"women\":2,\r\n    \"average\":3.1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -527,7 +527,7 @@
 						"api",
 						"v1",
 						"housework-stats",
-						"Albanian",
+						"albanian",
 						"2011"
 					]
 				}
@@ -571,7 +571,7 @@
 						"api",
 						"v1",
 						"housework-stats",
-						"Albanian"
+						"albanian"
 					]
 				}
 			},
@@ -647,7 +647,7 @@
 						"api",
 						"v1",
 						"housework-stats",
-						"Albanian",
+						"albanian",
 						"2011"
 					]
 				}
@@ -674,7 +674,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"Albanian\",\r\n\"year\": 2013,\r\n\"women\": 21.7,\r\n\"men\": 3.47,\r\n\"average\": 12.58\r\n}",
+					"raw": "{\r\n\"country\": \"albanian\",\r\n\"year\": 2013,\r\n\"women\": 21.7,\r\n\"men\": 3.47,\r\n\"average\": 12.58\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -691,7 +691,7 @@
 						"api",
 						"v1",
 						"housework-stats",
-						"Chile"
+						"chile"
 					]
 				}
 			},
