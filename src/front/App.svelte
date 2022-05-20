@@ -11,9 +11,11 @@
 	import Mygraph from "./Mygraph.svelte";
 	import MygraphJHG from "./MygraphJHG.svelte";
 	import MygraphRma from "./rafmolalv/MygraphRMA.svelte";
+	import MygraphRma2 from "./rafmolalv/MygraphRMA2.svelte";
 	import MygraphSGB from "./MygraphSGB.svelte";
 	import MygraphJHGv2 from "./MygraphJHGv2.svelte";
 	import Integracion1RMA from "./rafmolalv/PublicExpenditureGraph.svelte";
+	import Integracion2RMA from "./rafmolalv/EnergyConsumptionGraph.svelte";
 	import GraphCo2Stats from "./GraphCo2Stats.svelte";
 	import GraphAirPollutionStats from "./GraphAirPollutionStats.svelte";
 	import GraphExternalAPI1 from "./GraphExternalAPI1.svelte";
@@ -36,9 +38,11 @@
 		"/graph": Mygraph,
 		"/graphJHG": MygraphJHG,
 		"/graphRMA": MygraphRma,
+		"/graphRMA2": MygraphRma2,
 		"/graphSGB": MygraphSGB,
 		"/graphJHGv2": MygraphJHGv2,
 		"/Integracion1RMA": Integracion1RMA,
+		"/Integracion2RMA": Integracion2RMA,
 		"/graphCo2Stats": GraphCo2Stats,
 		"/graphRegistrationStats": GraphAirPollutionStats,
 		"/graphExternalAPI": GraphExternalAPI1,

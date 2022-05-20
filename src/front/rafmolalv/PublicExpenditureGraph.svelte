@@ -24,7 +24,7 @@
 
     async function getStats() {
         console.log("Fetching stats....");
-        const res = await fetch("https://sos2122-27.herokuapp.com/api/v2/public-expenditure-stats");
+        const res = await fetch("/remoteExp");
         const res1 = await fetch("/api/v2/repeaters-stats");
 
         if (res.ok) {
@@ -125,8 +125,7 @@
          de gasto público </h1>
 
     <br />
-    <br />
     <div id="barChart_1"></div>
-    <Button color="outline-dark" on:click={function (){window.location.href = `/`}}>Volver</Button>
+    <Button color="outline-dark" on:click={function (){window.history.back();}}>Volver</Button>
 
 </main>

@@ -77,8 +77,8 @@
     <h2>Datos de repetidores en primaria</h2>
     <h4>Biblioteca: ApexChart.js</h4>
     <div id='chart'></div>
-    <Button color="outline-dark" on:click={function (){window.location.href = `/#/ApiRMA/`}}>Volver</Button>
-</main>
+    <Button color="outline-dark" on:click={function (){window.history.back()}}>Volver</Button>
+  </main>
 
 <style>
 #chart {

@@ -39,9 +39,11 @@
 	<a href="http://sos2122-32.herokuapp.com/api/v1/repeaters-stats/docs"
 		><button color="blue">API v1</button></a
 	>
+	<a href="http://sos2122-32.herokuapp.com/api/v2/repeaters-stats/docs"
+		><button color="blue">API v2</button></a
+	>
 	<a href="/#/ApiRMA"><button>Interfaz</button></a>
 	<a href="/api/v2/repeaters-stats"><button>Backend</button></a>
-	<a href="/#/Integracion1RMA"><button>Integracion 1</button></a>
 
 	<p>Sergio Jesús García Blanco</p>
 	<a href="http://sos2122-32.herokuapp.com/api/v1/ending-stats/docs"

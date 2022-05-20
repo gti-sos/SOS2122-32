@@ -10,46 +10,9 @@
     let r_women = [];
     let r_men = [];
     let r_average = [];
-        //ending-stats
-    let endingStats = [];
-    let e_country = [];
-    let e_women = [];
-    let e_men = [];
-    let e_average = [];
-    //
-
-    async function getEndingStats() {
-        console.log("Fetching stats....");
-        const res = await fetch("/api/v1/ending-stats");
-        if (res.ok) {
-            const data = await res.json();
-            endingStats = data;
-            console.log("Estadísticas recibidas: " + endingStats.length);
-            //inicializamos los arrays para mostrar los datos
-            endingStats.forEach((stat) => {
-                e_country.push(stat.country + "-" + stat.year);
-                e_women.push(stat["women"]);
-                e_men.push(stat["men"]);
-                e_average.push(stat["average"]);
-            });
-            await delay(500);
-        } else {
-            console.log("Error cargando los datos");
-        }
-    }
-
+ 
     let apiData = [];
-    async function getData() {
-        const res = await fetch("/api/v1/housework-stats/data");
-        if (res.ok) {
-            const json = await res.json();
-            console.log(JSON.stringify(json));
-            apiData = json;
-            loadGraph();
-        } else {
-            console.log("Error in request");
-        }
-    }
+
 
     async function getRepeatersStats() {
         console.log("Fetching stats....");
@@ -66,6 +29,8 @@
                 r_average.push(stat["average"]);
             });
             await delay(500);
+            loadGraph();
+
         } else {
             console.log("Error cargando los datos");
         }
@@ -80,21 +45,22 @@
         });
         Highcharts.chart("container", {
             chart: {
-                 type: 'area'
+                 type: 'areaspline'
             },
             title: {
-                text: "Housework-Repeaters-Ending Stats",
+                text: "Repeaters Stats",
             },
 
 
             yAxis: {
                 title: {
-                    text: "Media de mujeres y hombres",
+                    text: "Valor",
                 },
             },
 
             xAxis: {
-                categories: apiDataY,
+                type: 'País-Año',
+                categories: r_country
             },
 
             legend: {
@@ -112,19 +78,19 @@
             },
 
             series: [
+              
                 {
-                    name: "Housework",
-                    data: apiDataA,
+                    name: "Mujeres",
+                    data: r_women,
                 },
-               
                 {
-                    name: "Repeaters",
+                    name: "Hombres",
+                    data: r_men,
+                },
+                {
+                    name: "Media",
                     data: r_average,
-                },
-                {
-                    name: "Ending",
-                    data: e_average,
-                },
+                }
             ],
 
             responsive: {
@@ -145,9 +111,7 @@
             },
         });
     }
-    onMount(getData);
     onMount(getRepeatersStats);
-    onMount(getEndingStats);
 
 </script>
 

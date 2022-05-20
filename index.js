@@ -59,6 +59,15 @@ app.use(paths2, function (req, res) {
   req.pipe(request(url)).pipe(res);
 });
 
+var paths3 = '/remoteEnergy';
+var apiServerHost3 = 'https://sos2122-10.herokuapp.com/api/v2/energy-consumptions';
+
+app.use(paths3, function (req, res) {
+  var url = apiServerHost3 + req.url;
+  console.log('piped: ' + req.url);
+  req.pipe(request(url)).pipe(res);
+});
+
 app.listen(port, ()=> {
     console.log(`Server ready at port ${port}`);
 });
