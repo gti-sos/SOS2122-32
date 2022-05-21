@@ -8,7 +8,8 @@
     let stats_women = [];
     let stats_men = [];
     let stats_average = []; 
-    async function getDebtStats(){
+
+    async function getRepeatersStats(){
       console.log("Fetching stats....");
       const res = await fetch("/api/v2/repeaters-stats");
       if(res.ok){
@@ -63,7 +64,7 @@
       var chart = new ApexCharts(document.querySelector("#chart"), options);
       chart.render();
     }
-    onMount(getDebtStats);
+    onMount(getRepeatersStats);
     
 </script>
 

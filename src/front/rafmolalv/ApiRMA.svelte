@@ -191,10 +191,10 @@
 			<tbody>
 				<tr>
 					<td><input bind:value={newDato.country} /></td>
-					<td><input bind:value={newDato.year} /></td>
-					<td><input bind:value={newDato.women} /></td>
-					<td><input bind:value={newDato.men} /></td>
-					<td><input bind:value={newDato.average} /></td>
+					<td><input type="number" min="2000" bind:value={newDato.year} /></td>
+					<td><input type="number" min="0" bind:value={newDato.women} /></td>
+					<td><input type="number" min="0" bind:value={newDato.men} /></td>
+					<td><input type="number" min="0" bind:value={newDato.average} /></td>
 					<td
 						><Button outline color="primary" on:click={insertDato}
 							>Insertar</Button

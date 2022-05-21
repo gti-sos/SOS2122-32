@@ -37,6 +37,9 @@
 <Button outline color="secondary" on:click={function (){
     window.location.href = `/#/Integracion2RMA`;
 }}>Energy Consumption stats</Button>
+<Button outline color="secondary" on:click={function (){
+    window.location.href = `/#/ApiExterna1`;
+}}>Api Externa 1</Button>
 <br>
 <br>
 <br>

@@ -18,7 +18,7 @@
     let datos = [];
     let datos1 = [];
 
-    async function getDebtStats(){
+    async function getStats(){
       console.log("Fetching stats....");
       const res = await fetch("https://sos2122-10.herokuapp.com/api/v2/energy-consumptions");
       const res1 = await fetch("/api/v2/repeaters-stats");
@@ -43,11 +43,14 @@
                 r_average.push(stat.average);
             });
           await delay(500);
+          
           loadGraph();
       }else{
           console.log("Error cargando los datos");
       }
     }
+
+    console.log("datos" + r_women);
     async function loadGraph(){
       var options = {
         
@@ -92,7 +95,7 @@
       var chart = new ApexCharts(document.querySelector("#chart"), options);
       chart.render();
     }
-    onMount(getDebtStats);
+    onMount(getStats);
     
 </script>
 
