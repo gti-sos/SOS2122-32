@@ -97,7 +97,7 @@
             },
             
             series: [{
-          name: 'Capacidad',
+          name: 'Goles',
           data: goles
         }]
         });
