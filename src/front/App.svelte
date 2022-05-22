@@ -17,6 +17,7 @@
 	import Integracion1RMA from "./rafmolalv/PublicExpenditureGraph.svelte";
 	import Integracion2RMA from "./rafmolalv/EnergyConsumptionGraph.svelte";
 	import ApiExterna1 from "./rafmolalv/ApiExterna1.svelte";
+	import ApiExterna2 from "./rafmolalv/ApiExterna2.svelte";
 	import GraphCo2Stats from "./GraphCo2Stats.svelte";
 	import GraphAirPollutionStats from "./GraphAirPollutionStats.svelte";
 	import GraphExternalAPI1 from "./GraphExternalAPI1.svelte";
@@ -45,6 +46,7 @@
 		"/Integracion1RMA": Integracion1RMA,
 		"/Integracion2RMA": Integracion2RMA,
 		"/ApiExterna1": ApiExterna1,
+		"/ApiExterna2": ApiExterna2,
 		"/graphCo2Stats": GraphCo2Stats,
 		"/graphRegistrationStats": GraphAirPollutionStats,
 		"/graphExternalAPI": GraphExternalAPI1,
