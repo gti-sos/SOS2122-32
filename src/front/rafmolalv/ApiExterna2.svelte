@@ -4,13 +4,6 @@
     //import Highcharts from "highcharts";
     const delay = ms => new Promise(res => setTimeout(res,ms));
 
-    //repeaters-stats
-    let repeatersStats = [];
-    let r_country = [];
-    let r_women = [];
-    let r_men = [];
-    let r_average = [];
- 
     let apiData = [];
     let valores = [];
 
@@ -19,13 +12,11 @@
 
 
 
-    async function getApiExterna1() {
+    async function getDatosGoles() {
         console.log("Fetching stats....");
         const res = await fetch("https://www.thesportsdb.com/api/v1/json/2/lookuptable.php?l=4335&s=2021-2022");
         if (res.ok) {
             const data = await res.json();
-            repeatersStats = data;
-            console.log("Estadísticas recibidas: " + JSON.stringify(repeatersStats,null,2));
             //inicializamos los arrays para mostrar los datos
             data.table.forEach((stat) => {
 
@@ -36,13 +27,7 @@
                 console.log("Equipo"+ JSON.stringify(equipo,null,2) + " , Goles: "+JSON.stringify(goles,null,2))
                 
                
-            });
-            
-
-           
-
-            
-
+            });         
 
             await delay(500);
 
@@ -102,7 +87,7 @@
         }]
         });
     }
-    onMount(getApiExterna1);
+    onMount(getDatosGoles);
     
 
 </script>

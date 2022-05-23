@@ -43,6 +43,12 @@
 <Button outline color="secondary" on:click={function (){
     window.location.href = `/#/ApiExterna2`;
 }}>Api Externa 2</Button>
+<Button outline color="secondary" on:click={function (){
+    window.location.href = `/#/ApiExterna3`;
+}}>Api Externa 3</Button>
+<Button outline color="secondary" on:click={function (){
+    window.location.href = `/#/ApiExterna4`;
+}}>Api Externa 4</Button>
 <br>
 <br>
 <br>

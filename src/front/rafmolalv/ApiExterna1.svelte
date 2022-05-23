@@ -4,12 +4,6 @@
     //import Highcharts from "highcharts";
     const delay = ms => new Promise(res => setTimeout(res,ms));
 
-    //repeaters-stats
-    let repeatersStats = [];
-    let r_country = [];
-    let r_women = [];
-    let r_men = [];
-    let r_average = [];
  
     let apiData = [];
     let valores = [];
@@ -20,14 +14,11 @@
     let asesinatos_correcion=[];
 
 
-    async function getApiExterna1() {
+    async function getDatosPrisonBreak() {
         console.log("Fetching stats....");
         const res = await fetch("https://prisonbreakapi.me/api/characters");
         if (res.ok) {
             const data = await res.json();
-            repeatersStats = data;
-            console.log("Estadísticas recibidas: " + JSON.stringify(repeatersStats,null,2));
-            //inicializamos los arrays para mostrar los datos
             data.forEach((stat) => {
                 if(stat["kills"]>0 && stat["kills"]!="null"){
                     console.log("Personaje: "+ JSON.stringify(stat["name"],null,2) + " Kills: "+ JSON.stringify(stat["kills"],null,2));
@@ -107,7 +98,7 @@
         }]
         });
     }
-    onMount(getApiExterna1);
+    onMount(getDatosPrisonBreak);
     
 
 </script>
