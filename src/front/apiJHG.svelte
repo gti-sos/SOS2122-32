@@ -248,7 +248,7 @@ loading
 		window.location.href = `/#/graphCo2Stats`;
 	}}>Gráfica SOS-22</Button>
 	<Button outline color="secondary" on:click={function (){
-		window.location.href = `/#/graphRegistrationStats`;
+		window.location.href = `/#/graphAirPollutionStats`;
 	}}>Gráfica SOS-31</Button>
 	<Button outline color="secondary" on:click={function (){
 		window.location.href = `/#/graphExternalAPI`;

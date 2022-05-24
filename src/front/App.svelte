@@ -52,7 +52,7 @@
 		"/ApiExterna3": ApiExterna3,
 		"/ApiExterna4": ApiExterna4,
 		"/graphCo2Stats": GraphCo2Stats,
-		"/graphRegistrationStats": GraphAirPollutionStats,
+		"/graphAirPollutionStats": GraphAirPollutionStats,
 		"/graphExternalAPI": GraphExternalAPI1,
 		"/graphExternalAPI2": GraphExternalAPI2,
 		"/integrations": Integraciones,
