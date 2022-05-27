@@ -3,6 +3,7 @@
 </script>
 <main>
     <b>Integraciones Javier Hidalgo García:</b>
+    <br>
 <Button outline color="secondary" on:click={function (){
     window.location.href = `/#/graphJHG`;
 }}>Gráfica Plotly</Button>
@@ -25,6 +26,7 @@
 <br>
 <br>
 <b>Integraciones Rafael Molino Alvarez:</b>
+<br>
 <Button outline color="secondary" on:click={function (){
     window.location.href = `/#/graphRMA`;
 }}>Gráfica ApexChart</Button>
@@ -52,6 +54,36 @@
 <br>
 <br>
 <br>
-<Button color="outline-dark" on:click={function (){window.location.href = `/`}}>Volver</Button>
+<b>Integraciones Sergio Jesús García Blanco:</b>
+<br>
+<Button outline color="secondary" on:click={function (){
+    window.location.href = `/#/graphSGB`;
+}}>Gráfica Highchart</Button>
+<Button outline color="secondary" on:click={function (){
+    window.location.href = `/#/graphSGB2`;
+}}>Gráfica </Button>
+<Button outline color="secondary" on:click={function (){
+    window.location.href = `/#/Integracion1RMA`;
+}}>Public expenditure stats</Button>
+<Button outline color="secondary" on:click={function (){
+    window.location.href = `/#/Integracion2RMA`;
+}}>Energy Consumption stats</Button>
+<Button outline color="secondary" on:click={function (){
+    window.location.href = `/#/ApiExterna1`;
+}}>Api Externa 1</Button>
+<Button outline color="secondary" on:click={function (){
+    window.location.href = `/#/ApiExterna2`;
+}}>Api Externa 2</Button>
+<Button outline color="secondary" on:click={function (){
+    window.location.href = `/#/ApiExterna3`;
+}}>Api Externa 3</Button>
+<Button outline color="secondary" on:click={function (){
+    window.location.href = `/#/ApiExterna4`;
+}}>Api Externa 4</Button>
+<br>
+<br>
+<br>
+
+<Button color="outline-dark" position:center on:click={function (){window.location.href = `/`}}>Volver</Button>
 
 </main>
