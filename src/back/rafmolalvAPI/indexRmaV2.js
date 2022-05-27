@@ -359,7 +359,12 @@ module.exports.register = (app, db) => {
             req.body.year == null |
             req.body.women == null |
             req.body.men == null |
-            req.body.average == null);
+            req.body.average == null |
+            req.body.country === "" |
+            req.body.year === "" |
+            req.body.women === "" |
+            req.body.men === ""|
+            req.body.average === "");
     };
 
     //Crear un nuevo objeto
