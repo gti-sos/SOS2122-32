@@ -57,46 +57,44 @@
             return [i.year, i.country];
         });
         Highcharts.chart('container', {
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Numero de asesinatos de los principales personajes de Prison Break'
-            },
-            
-            xAxis: {
-                crosshair: true,
-                tickmarkPlacement: 'on',
-                categories: personaje,
-                
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Valor'
-                },
-                labels: {
-                    formatter: function(){
-                        return valores;
-                    }
-                }
-            },
-            
-            plotOptions: {
-                column:{
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-            legend: {
-                enabled: true
-            },
-            
-            series: [{
-          name: 'Asesinatos',
-          data: asesinatos_correcion
-        }]
-        });
+    chart: {
+        type: 'columnpyramid'
+    },
+    title: {
+        text: 'Los 5 personajes principales que más mataron en Prison Break'
+    },
+    colors: ['#C79D6D', '#B5927B', '#CE9B84', '#B7A58C', '#C7A58C'],
+    xAxis: {
+        crosshair: true,
+        labels: {
+            style: {
+                fontSize: '14px'
+            }
+        },
+        type: 'category'
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Asesinatos'
+        }
+    },
+    
+    series: [{
+        name: 'Asesinatos',
+        colorByPoint: true,
+        data: [
+
+        
+            [personaje[0], asesinatos_correcion[0]],
+            [personaje[1], asesinatos_correcion[1]],
+            [personaje[2], asesinatos_correcion[2]],
+            [personaje[3], asesinatos_correcion[3]],
+            [personaje[4], asesinatos_correcion[4]]
+        ],
+        showInLegend: false
+    }]
+});
     }
     onMount(getDatosPrisonBreak);
     
@@ -105,10 +103,10 @@
 
 <svelte:head>
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>  
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script
         src="https://code.highcharts.com/modules/accessibility.js"
         on:load={loadGraph}></script>

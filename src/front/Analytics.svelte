@@ -4,6 +4,8 @@
     //import Highcharts from "highcharts";
     const delay = ms => new Promise(res => setTimeout(res,ms));
 
+    let d_country = [];
+
     //repeaters-stats
     let repeatersStats = [];
     let r_country = [];
@@ -27,7 +29,7 @@
             console.log("Estadísticas recibidas: " + endingStats.length);
             //inicializamos los arrays para mostrar los datos
             endingStats.forEach((stat) => {
-                e_country.push(stat.country + "-" + stat.year);
+                d_country.push(stat.country + "-" + stat.year);
                 e_women.push(stat["women"]);
                 e_men.push(stat["men"]);
                 e_average.push(stat["average"]);
@@ -60,7 +62,7 @@
             console.log("Estadísticas recibidas: " + repeatersStats.length);
             //inicializamos los arrays para mostrar los datos
             repeatersStats.forEach((stat) => {
-                r_country.push(stat.country + "-" + stat.year);
+                d_country.push(stat.country + "-" + stat.year);
                 r_women.push(stat["women"]);
                 r_men.push(stat["men"]);
                 r_average.push(stat["average"]);
@@ -76,7 +78,7 @@
             return i.average;
         });
         let apiDataY = apiData.map((i) => {
-            return [i.year, i.country];
+            return [i.year];
         });
         Highcharts.chart("container", {
             chart: {
@@ -94,7 +96,7 @@
             },
 
             xAxis: {
-                categories: apiDataY,
+                categories: d_country,
             },
 
             legend: {

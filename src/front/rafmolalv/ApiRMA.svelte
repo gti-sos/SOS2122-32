@@ -98,7 +98,7 @@
 				"Content-Type": "application/json",
 			},
 		}).then(function (res) {
-			if(res.ok){
+			if(res.status === 200 || res.status ===201){
 				getrepeaters();
 				window.alert("Entrada introducida con éxito");
 		}else{
@@ -191,10 +191,10 @@
 			<tbody>
 				<tr>
 					<td><input bind:value={newDato.country} /></td>
-					<td><input type="number" min="2000" bind:value={newDato.year} /></td>
-					<td><input type="number" min="0" bind:value={newDato.women} /></td>
-					<td><input type="number" min="0" bind:value={newDato.men} /></td>
-					<td><input type="number" min="0" bind:value={newDato.average} /></td>
+					<td><input required type="number" min="2000" bind:value={newDato.year} /></td>
+					<td><input  required type="number" min="0" bind:value={newDato.women} /></td>
+					<td><input  required type="number" min="0" bind:value={newDato.men} /></td>
+					<td><input  required type="number" min="0" bind:value={newDato.average} /></td>
 					<td
 						><Button outline color="primary" on:click={insertDato}
 							>Insertar</Button
