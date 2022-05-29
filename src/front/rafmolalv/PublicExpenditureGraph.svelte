@@ -15,6 +15,8 @@
     let r_women = ["mujeres"];
     let r_men = ["hombres"];
     let r_average = ["media"];
+
+    
    
     let datos = [];
     let datos1 = [];
