@@ -5,7 +5,6 @@ const request = require('request');
 const cors = require('cors'); 
 const express = require("express");
 const app = express();
-
 app.use(cors());
 //Proxy
 
@@ -74,10 +73,8 @@ var initialStats = [
         average: 2.837
     }
 ];
-
 module.exports.register = (app, db) => {
     app.use(bodyParser.json());
-
 
     //Documentacion
     app.get(RMA_BASE_API_URL + "/docs", (req, res) => {
@@ -496,5 +493,4 @@ module.exports.register = (app, db) => {
             });
         });
     });
-
 };
