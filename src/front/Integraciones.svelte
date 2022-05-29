@@ -53,7 +53,7 @@
 }}>Api Externa 4</Button>
 <br>
 <br>
-<br>
+
 <b>Integraciones Sergio Jesús García Blanco:</b>
 <br>
 <Button outline color="secondary" on:click={function (){
@@ -62,24 +62,7 @@
 <Button outline color="secondary" on:click={function (){
     window.location.href = `/#/graphSGB2`;
 }}>Gráfica </Button>
-<Button outline color="secondary" on:click={function (){
-    window.location.href = `/#/Integracion1RMA`;
-}}>Public expenditure stats</Button>
-<Button outline color="secondary" on:click={function (){
-    window.location.href = `/#/Integracion2RMA`;
-}}>Energy Consumption stats</Button>
-<Button outline color="secondary" on:click={function (){
-    window.location.href = `/#/ApiExterna1`;
-}}>Api Externa 1</Button>
-<Button outline color="secondary" on:click={function (){
-    window.location.href = `/#/ApiExterna2`;
-}}>Api Externa 2</Button>
-<Button outline color="secondary" on:click={function (){
-    window.location.href = `/#/ApiExterna3`;
-}}>Api Externa 3</Button>
-<Button outline color="secondary" on:click={function (){
-    window.location.href = `/#/ApiExterna4`;
-}}>Api Externa 4</Button>
+
 <br>
 <br>
 <br>
