@@ -94,9 +94,9 @@
         
             
         <div>
-            <h2>Datos de repetidores en primaria</h2>
+            <h2>Datos de niños que finalizan primaria</h2>
           </div>
-          <h4>Biblioteca: ApexChart.js</h4>
+          <h4>Biblioteca: HighCharts.js</h4>
       
         <div>
             <figure class="highcharts-figure">
