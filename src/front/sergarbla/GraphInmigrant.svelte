@@ -72,7 +72,7 @@
                 type:'line'
             },
             title: {
-                text: `Gráfica conjunta `
+                text: `Gráfica conjunt `
             },
         
             yAxis: {
