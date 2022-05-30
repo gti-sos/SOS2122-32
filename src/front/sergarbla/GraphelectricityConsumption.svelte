@@ -73,7 +73,7 @@
         Highcharts.chart('container', {
         
             chart: {
-                type:'bar'
+                type:'scatter'
             },
             title: {
                 text: `Gráfica conjunta `

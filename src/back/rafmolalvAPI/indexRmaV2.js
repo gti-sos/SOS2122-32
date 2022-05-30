@@ -22,7 +22,7 @@ var repeatersStats = [];
 
 var initialStats = [
     {
-        country: "Albanian",
+        country: "albanian",
         year: 2011,
         women: 0.725,
         men: 1.005,
@@ -31,7 +31,7 @@ var initialStats = [
     },
 
     {
-        country: "Chile",
+        country: "chile",
         year: 2015,
         women: 2.665,
         men: 4.501,
@@ -40,7 +40,7 @@ var initialStats = [
     },
 
     {
-        country: "Belgium",
+        country: "belgium",
         year: 2013,
         women: 2.532,
         men: 2.682,
@@ -48,7 +48,7 @@ var initialStats = [
 
     },
     {
-        country: "Belgium",
+        country: "belgium",
         year: 2016,
         women: 2.532,
         men: 2.682,
@@ -57,7 +57,7 @@ var initialStats = [
     },
 
     {
-        country: "Ireland",
+        country: "ireland",
         year: 2005,
         women: 0.299,
         men: 0.36,
@@ -66,7 +66,7 @@ var initialStats = [
     },
 
     {
-        country: "Argentina",
+        country: "argentina",
         year: 2013,
         women: 2.283,
         men: 3.39,
@@ -111,6 +111,7 @@ module.exports.register = (app, db) => {
     //funcion para comprobar query
 
     function compruebaQuery(e) {
+
         if (e.length == 0) {
             return true;
         }

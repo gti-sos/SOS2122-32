@@ -48,7 +48,7 @@
                 }
             },
             data: {
-                type: "bar",
+                type: "area",
                 labels:true,
                 columns: [
                     Assists,
