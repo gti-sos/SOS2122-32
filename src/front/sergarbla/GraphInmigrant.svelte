@@ -69,7 +69,7 @@
         Highcharts.chart('container', {
         
             chart: {
-                type:'area'
+                type:'line'
             },
             title: {
                 text: `Gráfica conjunta `
