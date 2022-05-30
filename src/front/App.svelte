@@ -18,7 +18,7 @@
 	import Integracion1RMA from "./rafmolalv/PublicExpenditureGraph.svelte";
 	import Integracion2RMA from "./rafmolalv/EnergyConsumptionGraph.svelte";
 	import GraphelectricityConsumption from "./sergarbla/GraphelectricityConsumption.svelte";
-	import Graphinmigrant from "./sergarbla/Graphinmigrant.svelte";
+	import Graphinmigrant from "./sergarbla/GraphInmigrant.svelte";
 	import ApiExterna1 from "./rafmolalv/ApiExterna1.svelte";
 	import ApiExterna2 from "./rafmolalv/ApiExterna2.svelte";
 	import ApiExterna3 from "./rafmolalv/ApiExterna3.svelte";
