@@ -1,7 +1,7 @@
 <script>
 	import ApiJHG from "./apiJHG.svelte";
 	import ApiRMA from "./rafmolalv/ApiRMA.svelte";
-	import ApiSGB from "./apiSGB.svelte"
+	import ApiSGB from "./sergarbla/apiSGB.svelte"
 </script>
 
 <main>

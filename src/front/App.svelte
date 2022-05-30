@@ -17,6 +17,8 @@
 	import MygraphJHGv2 from "./MygraphJHGv2.svelte";
 	import Integracion1RMA from "./rafmolalv/PublicExpenditureGraph.svelte";
 	import Integracion2RMA from "./rafmolalv/EnergyConsumptionGraph.svelte";
+	import GraphelectricityConsumption from "./sergarbla/GraphelectricityConsumption.svelte";
+	import Graphinmigrant from "./sergarbla/Graphinmigrant.svelte";
 	import ApiExterna1 from "./rafmolalv/ApiExterna1.svelte";
 	import ApiExterna2 from "./rafmolalv/ApiExterna2.svelte";
 	import ApiExterna3 from "./rafmolalv/ApiExterna3.svelte";
@@ -51,6 +53,8 @@
 		"/graphJHGv2": MygraphJHGv2,
 		"/Integracion1RMA": Integracion1RMA,
 		"/Integracion2RMA": Integracion2RMA,
+		"/Graphelectricity":GraphelectricityConsumption,
+		"/Graphinmigrant":Graphinmigrant,
 		"/ApiExterna1": ApiExterna1,
 		"/ApiExterna2": ApiExterna2,
 		"/ApiExterna3": ApiExterna3,

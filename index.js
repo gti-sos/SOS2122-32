@@ -59,3 +59,13 @@ app.listen(port, ()=> {
     console.log(`Server ready at port ${port}`);
 });
 
+//###################### PROXYS API Sergio García Blanco ###############################//
+
+var paths3 = '/remoteElectricity';
+var apiServerHost3 = 'https://sos2122-12.herokuapp.com/api/v2/electricity-consumption-stats';
+
+app.use(paths3, function (req, res) {
+  var url = apiServerHost3 + req.url;
+  console.log('piped: ' + req.url);
+  req.pipe(request(url)).pipe(res);
+});

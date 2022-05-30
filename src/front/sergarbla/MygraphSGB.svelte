@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import Button from 'sveltestrap/src/Button.svelte';
+    import {pop} from "svelte-spa-router";
     
     
         const BASE_API_PATH = "/api/v1/ending-stats";
@@ -34,7 +35,7 @@
                 
         Highcharts.chart('container', {
           chart: {
-              type: 'column'
+              type: 'spline'
           },
           title: {
               text: 'Porcentajes de Mujeres, Hombres y Promedio por paises'
@@ -112,7 +113,13 @@
             <p class="error">{errorMsg}</p>
           {/if}
         </div>
-        <Button color="outline-dark" on:click={function (){window.location.href = `/#/ApiSGB/`}}>Volver</Button>
+        <br><br>
+        <Button outline color="dark" on:click="{()=>{
+            pop();
+        }}">
+        Volver
+        </Button>
+        <br><br>
       </main>
       
       <style>
@@ -126,6 +133,7 @@
           font-size: 20px;
           margin-top:80px;
         }
+        
         
        
       </style>

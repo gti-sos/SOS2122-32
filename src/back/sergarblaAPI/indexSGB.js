@@ -44,28 +44,35 @@ app.get(BASE_API_URL+"/ending-stats", (req,res)=>{
         res.send(result);
         }
     }
-    }else if(req.query.offset || req.query.limit){
-        var list = [req.query.offset, req.query.limit];
-        list = list.filter(i=>{
-            return(i!=undefined);
-        });
-        if(list.length != Object.keys(req.query).length){
-            res.sendStatus(400,"BAD REQUEST");
-        }
-        else if(req.query.offset&&req.query.limit){
-            res.send(JSON.stringify(endingStats.slice(req.query.offset,parseInt(req.query.offset)+parseInt(req.query.limit)),null,2));
-        }
-        else if(req.query.offset && !req.query.limit){
-            res.send(JSON.stringify(endingStats.slice(req.query.offset),null,2))
-        }
-        else res.send(JSON.stringify(endingStats.slice(0,req.query.limit),null,2))
-    }
-    else if(JSON.stringify(req.query,null,2) != JSON.stringify({},null,2)){
-        console.log(JSON.stringify("{}",null,2));
+}else if(req.query.offset || req.query.limit || req.query.from || req.query.to){
+    var list = [req.query.offset, req.query.limit,req.query.from, req.query.to];
+    list = list.filter(i=>{
+        return(i!=undefined);
+    });
+    if(list.length != Object.keys(req.query).length){
         res.sendStatus(400,"BAD REQUEST");
-    }else{
-    res.send(JSON.stringify(endingStats,null,2));
     }
+    else if(req.query.from && req.query.to && req.query.limit && req.query.offset){
+        endingStats2 = endingStats.filter(h=>{
+            return(h.year >= req.query.from && h.year<=req.query.to);
+        });
+        res.send(JSON.stringify(endingStats2,null,2));
+    }
+    else if(req.query.offset&&req.query.limit){
+        res.send(JSON.stringify(endingStats.slice(req.query.offset,parseInt(req.query.offset)+parseInt(req.query.limit)),null,2));
+    }
+    else if(req.query.offset && !req.query.limit){
+        res.send(JSON.stringify(endingStats.slice(req.query.offset),null,2))
+    }
+    else res.send(JSON.stringify(endingStats.slice(0,req.query.limit),null,2))
+}
+else if(JSON.stringify(req.query,null,2) != JSON.stringify({},null,2)){
+    console.log(req.query.from);
+    console.log(JSON.stringify("{}",null,2));
+    res.sendStatus(400,"BAD REQUEST");
+}else{
+res.send(JSON.stringify(endingStats,null,2));
+}
 });
 
 app.get(BASE_API_URL+"/ending-stats/:country/:year", (req,res)=>{
@@ -235,7 +242,7 @@ app.post(BASE_API_URL+"/ending-stats", (req,res)=>{
     if(result != 0){
         res.sendStatus(409,"CONFLICT");
     }else{
-        houseworkStats.push(req.body);
+        endingStats.push(req.body);
         res.sendStatus(201,"CREATED");
     }
 }else{

@@ -24,7 +24,6 @@
 }}>Gráfica ExternalAPI2</Button>
 <br>
 <br>
-<br>
 <b>Integraciones Rafael Molino Alvarez:</b>
 <br>
 <Button outline color="secondary" on:click={function (){
@@ -61,7 +60,19 @@
 }}>Gráfica Highchart</Button>
 <Button outline color="secondary" on:click={function (){
     window.location.href = `/#/graphSGB2`;
-}}>Gráfica </Button>
+}}>Gráfica Zingchart</Button>
+<Button outline color="secondary" on:click={function (){
+    window.location.href = `/#/Graphelectricity`;
+}}>Gráfica SOS-12</Button>
+<Button outline color="secondary" on:click={function (){
+    window.location.href = `/#/Graphinmigrant`;
+}}>Gráfica SOS-13</Button>
+<Button outline color="secondary" on:click={function (){
+    window.location.href = `/#/ExternalApi1`;
+}}>Gráfica ExternalAPI1</Button>
+<Button outline color="secondary" on:click={function (){
+    window.location.href = `/#/ExternalApi2`;
+}}>Gráfica ExternalAPI2</Button>
 
 <br>
 <br>
